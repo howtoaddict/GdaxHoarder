@@ -68,7 +68,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(170, 20);
             this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.Value = new decimal(new int[] {
-            140,
+            14,
             0,
             0,
             0});
@@ -85,7 +85,7 @@
             this.numericUpDown2.Size = new System.Drawing.Size(170, 20);
             this.numericUpDown2.TabIndex = 3;
             this.numericUpDown2.Value = new decimal(new int[] {
-            10,
+            2,
             0,
             0,
             0});
@@ -111,7 +111,7 @@
             this.numericUpDown3.Size = new System.Drawing.Size(170, 20);
             this.numericUpDown3.TabIndex = 5;
             this.numericUpDown3.Value = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -137,7 +137,7 @@
             this.numLtc.Size = new System.Drawing.Size(170, 20);
             this.numLtc.TabIndex = 7;
             this.numLtc.Value = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -195,7 +195,7 @@
             this.btnBankDeposit.Name = "btnBankDeposit";
             this.btnBankDeposit.Size = new System.Drawing.Size(108, 23);
             this.btnBankDeposit.TabIndex = 12;
-            this.btnBankDeposit.Text = "Deposit";
+            this.btnBankDeposit.Text = "ACH Deposit";
             this.btnBankDeposit.UseVisualStyleBackColor = true;
             this.btnBankDeposit.Click += new System.EventHandler(this.btnBankDeposit_Click);
             // 

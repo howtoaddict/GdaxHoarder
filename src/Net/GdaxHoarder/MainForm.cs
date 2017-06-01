@@ -1,5 +1,6 @@
 ﻿using CoinbaseExchange.NET.Core;
 using CoinbaseExchange.NET.Endpoints.Account;
+using CoinbaseExchange.NET.Endpoints.PaymentMethods;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,9 +39,12 @@ namespace GdaxHoarder
             
         }
 
-        private void btnBankDeposit_Click(object sender, EventArgs e)
+        private async void btnBankDeposit_Click(object sender, EventArgs e)
         {
+            var clientPaymentMethods = new PaymentMethodsClient(_settings.ToAuthContainer());
+            var methods = await clientPaymentMethods.GetPaymentMethodsAsync();
 
+            var x = methods.ToString();
         }
     }
 }
