@@ -1,5 +1,6 @@
 ﻿using CoinbaseExchange.NET.Core;
 using CoinbaseExchange.NET.Endpoints.Account;
+using CoinbaseExchange.NET.Endpoints.Deposits;
 using CoinbaseExchange.NET.Endpoints.PaymentMethods;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,24 @@ namespace GdaxHoarder
             var clientPaymentMethods = new PaymentMethodsClient(_settings.ToAuthContainer());
             var methods = await clientPaymentMethods.GetPaymentMethodsAsync();
 
-            var x = methods.ToString();
+            var ach = methods.PaymentMethods.FirstOrDefault(a => a.Type == "ach_bank_account");
+            if (ach == null)
+            {
+                MessageBox.Show("Please define ACH Bank Deposit in your account before proceeding");
+                return;
+            }
+
+            var deposit = new DepositsClient(_settings.ToAuthContainer());
+            var result = await deposit.PostDepositsPaymentMethodAsync(
+                numDeposit.Value,
+                "USD",
+                ach.Id);
+
+            var displayString = "Error: " + result.HttpResponse.ContentBody;
+            if (result.HttpResponse.IsSuccessStatusCode)
+                displayString = "Deposit successfuly posted, payout at: " + result.Result.PayoutAt;
+
+            MessageBox.Show(displayString);
         }
     }
 }

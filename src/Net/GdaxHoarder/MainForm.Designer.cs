@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numDeposit = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +41,7 @@
             this.btnBuyEth = new System.Windows.Forms.Button();
             this.btnBuyLtc = new System.Windows.Forms.Button();
             this.btnBankDeposit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDeposit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLtc)).BeginInit();
@@ -56,18 +56,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Weekly Bank Deposit";
             // 
-            // numericUpDown1
+            // numDeposit
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(218, 7);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numDeposit.Location = new System.Drawing.Point(218, 7);
+            this.numDeposit.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(170, 20);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numDeposit.Name = "numDeposit";
+            this.numDeposit.Size = new System.Drawing.Size(170, 20);
+            this.numDeposit.TabIndex = 1;
+            this.numDeposit.Value = new decimal(new int[] {
             14,
             0,
             0,
@@ -215,12 +215,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numDeposit);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "GDax Hoarder by http://howtoaddict.com";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDeposit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLtc)).EndInit();
@@ -232,7 +232,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numDeposit;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
