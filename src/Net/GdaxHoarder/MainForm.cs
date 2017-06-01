@@ -1,4 +1,5 @@
 ﻿using CoinbaseExchange.NET.Core;
+using CoinbaseExchange.NET.Endpoints;
 using CoinbaseExchange.NET.Endpoints.Account;
 using CoinbaseExchange.NET.Endpoints.Deposits;
 using CoinbaseExchange.NET.Endpoints.PaymentMethods;
@@ -17,20 +18,20 @@ namespace GdaxHoarder
 {
     public partial class MainForm : Form
     {
-        private GdaxSettings _settings;
         public MainForm()
         {
             InitializeComponent();
 
-            _settings = GdaxSettings.Parse("../../../../.keys");
-            ExchangeClientBase.IsSandbox = _settings.IsSandbox;
+            var settings = GdaxSettings.Parse("../../../../.keys");
+            ExchangeClientBase.IsSandbox = settings.IsSandbox;
+
+            _api = new GdaxApi(settings.ToAuthContainer());
         }
 
+        private GdaxApi _api;
         private async void btnMain_Click(object sender, EventArgs e)
         {
-            var api = new AccountClient(_settings.ToAuthContainer());
-
-            var status = await api.ListAccounts();
+            var status = await _api.Account.ListAccounts();
 
             var x = status.ToString();
         }
@@ -42,8 +43,7 @@ namespace GdaxHoarder
 
         private async void btnBankDeposit_Click(object sender, EventArgs e)
         {
-            var clientPaymentMethods = new PaymentMethodsClient(_settings.ToAuthContainer());
-            var methods = await clientPaymentMethods.GetPaymentMethodsAsync();
+            var methods = await _api.PaymentMethods.GetPaymentMethodsAsync();
 
             var ach = methods.PaymentMethods.FirstOrDefault(a => a.Type == "ach_bank_account");
             if (ach == null)
@@ -52,15 +52,14 @@ namespace GdaxHoarder
                 return;
             }
 
-            var deposit = new DepositsClient(_settings.ToAuthContainer());
-            var result = await deposit.PostDepositsPaymentMethodAsync(
+            var result = await _api.Deposits.PaymentMethod(
                 numDeposit.Value,
                 "USD",
                 ach.Id);
 
             var displayString = "Error: " + result.HttpResponse.ContentBody;
             if (result.HttpResponse.IsSuccessStatusCode)
-                displayString = "Deposit successfuly posted, payout at: " + result.Result.PayoutAt;
+                displayString = "Deposit successfuly posted, payout at: " + result.PayoutAt;
 
             MessageBox.Show(displayString);
         }
