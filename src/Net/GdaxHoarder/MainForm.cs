@@ -21,7 +21,7 @@ namespace GdaxHoarder
             InitializeComponent();
 
             _settings = GdaxSettings.Parse("../../../../../.keys");
-            //ExchangeClientBase.IsSandbox = _settings.IsSandbox;
+            ExchangeClientBase.IsSandbox = _settings.IsSandbox;
         }
 
         private void btnMain_Click(object sender, EventArgs e)
