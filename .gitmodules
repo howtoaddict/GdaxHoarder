@@ -1,0 +1,3 @@
+[submodule "zlibs/CoinbaseExchange.NET"]
+	path = zlibs/CoinbaseExchange.NET
+	url = https://github.com/howtoaddict/CoinbaseExchange.NET.git
