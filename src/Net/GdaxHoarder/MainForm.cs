@@ -20,18 +20,27 @@ namespace GdaxHoarder
         {
             InitializeComponent();
 
-            _settings = GdaxSettings.Parse("../../../../../.keys");
+            _settings = GdaxSettings.Parse("../../../../.keys");
             ExchangeClientBase.IsSandbox = _settings.IsSandbox;
         }
 
-        private void btnMain_Click(object sender, EventArgs e)
+        private async void btnMain_Click(object sender, EventArgs e)
         {
+            var api = new AccountClient(_settings.ToAuthContainer());
 
+            var status = await api.ListAccounts();
+
+            var x = status.ToString();
         }
 
         private void btnBuyLtc_Click(object sender, EventArgs e)
         {
-            var api = new AccountClient(_settings.ToAuthContainer());
+            
+        }
+
+        private void btnBankDeposit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

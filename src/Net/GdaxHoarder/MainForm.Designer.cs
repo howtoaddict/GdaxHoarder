@@ -40,6 +40,7 @@
             this.btnBuyBtc = new System.Windows.Forms.Button();
             this.btnBuyEth = new System.Windows.Forms.Button();
             this.btnBuyLtc = new System.Windows.Forms.Button();
+            this.btnBankDeposit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -152,7 +153,7 @@
             // 
             // btnMain
             // 
-            this.btnMain.Location = new System.Drawing.Point(394, 4);
+            this.btnMain.Location = new System.Drawing.Point(231, 165);
             this.btnMain.Name = "btnMain";
             this.btnMain.Size = new System.Drawing.Size(108, 23);
             this.btnMain.TabIndex = 8;
@@ -188,11 +189,22 @@
             this.btnBuyLtc.UseVisualStyleBackColor = true;
             this.btnBuyLtc.Click += new System.EventHandler(this.btnBuyLtc_Click);
             // 
+            // btnBankDeposit
+            // 
+            this.btnBankDeposit.Location = new System.Drawing.Point(394, 4);
+            this.btnBankDeposit.Name = "btnBankDeposit";
+            this.btnBankDeposit.Size = new System.Drawing.Size(108, 23);
+            this.btnBankDeposit.TabIndex = 12;
+            this.btnBankDeposit.Text = "Deposit";
+            this.btnBankDeposit.UseVisualStyleBackColor = true;
+            this.btnBankDeposit.Click += new System.EventHandler(this.btnBankDeposit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 200);
+            this.Controls.Add(this.btnBankDeposit);
             this.Controls.Add(this.btnBuyLtc);
             this.Controls.Add(this.btnBuyEth);
             this.Controls.Add(this.btnBuyBtc);
@@ -231,5 +243,6 @@
         private System.Windows.Forms.Button btnBuyBtc;
         private System.Windows.Forms.Button btnBuyEth;
         private System.Windows.Forms.Button btnBuyLtc;
+        private System.Windows.Forms.Button btnBankDeposit;
     }
 }
