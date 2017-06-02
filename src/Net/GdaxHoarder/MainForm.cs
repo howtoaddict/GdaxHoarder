@@ -1,7 +1,9 @@
 ﻿using CoinbaseExchange.NET.Core;
+using CoinbaseExchange.NET.CoreGenerics;
 using CoinbaseExchange.NET.Endpoints;
 using CoinbaseExchange.NET.Endpoints.Account;
 using CoinbaseExchange.NET.Endpoints.Deposits;
+using CoinbaseExchange.NET.Endpoints.Orders;
 using CoinbaseExchange.NET.Endpoints.PaymentMethods;
 using System;
 using System.Collections.Generic;
@@ -62,6 +64,37 @@ namespace GdaxHoarder
                 displayString = "Deposit successfuly posted, payout at: " + result.PayoutAt;
 
             MessageBox.Show(displayString);
+        }
+
+        private async void btnBuyBtc_Click(object sender, EventArgs e)
+        {
+            var req = new OrdersMarketRequest
+            {
+                Side = "buy",
+                ProductId = "BTC-USD",
+                Funds = numBtcUsd.Value.ToString()
+            };
+
+            var resp = await _api.Orders.PostOrderMarket(req);
+            if (httpSuccess(resp))
+            {
+                var str = String.Format("Order {0} placed at {1}. Settled: {2}",
+                    resp.Id, resp.CreatedAt, resp.Settled);
+                MessageBox.Show(str, "Order Placed");
+            }
+        }
+
+        private bool httpSuccess(ExchangeResponseGenericBase resp)
+        {
+            var httpResp = resp.HttpResponse;
+            if (!httpResp.IsSuccessStatusCode)
+            {
+                MessageBox.Show(
+                    httpResp.ContentBody,
+                    "Error - "+ httpResp.StatusCode);
+            }
+
+            return httpResp.IsSuccessStatusCode;
         }
     }
 }

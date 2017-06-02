@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.numDeposit = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numBtcUsd = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             this.btnBuyLtc = new System.Windows.Forms.Button();
             this.btnBankDeposit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numDeposit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBtcUsd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLtc)).BeginInit();
             this.SuspendLayout();
@@ -73,18 +73,18 @@
             0,
             0});
             // 
-            // numericUpDown2
+            // numBtcUsd
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(218, 33);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numBtcUsd.Location = new System.Drawing.Point(218, 33);
+            this.numBtcUsd.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(170, 20);
-            this.numericUpDown2.TabIndex = 3;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numBtcUsd.Name = "numBtcUsd";
+            this.numBtcUsd.Size = new System.Drawing.Size(170, 20);
+            this.numBtcUsd.TabIndex = 3;
+            this.numBtcUsd.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -169,6 +169,7 @@
             this.btnBuyBtc.TabIndex = 9;
             this.btnBuyBtc.Text = "Buy BTC";
             this.btnBuyBtc.UseVisualStyleBackColor = true;
+            this.btnBuyBtc.Click += new System.EventHandler(this.btnBuyBtc_Click);
             // 
             // btnBuyEth
             // 
@@ -213,7 +214,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numBtcUsd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numDeposit);
             this.Controls.Add(this.label1);
@@ -221,7 +222,7 @@
             this.Name = "MainForm";
             this.Text = "GDax Hoarder by http://howtoaddict.com";
             ((System.ComponentModel.ISupportInitialize)(this.numDeposit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBtcUsd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLtc)).EndInit();
             this.ResumeLayout(false);
@@ -233,7 +234,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numDeposit;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numBtcUsd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label3;
