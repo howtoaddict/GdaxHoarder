@@ -93,3 +93,4 @@ build/
 # Project files
 apikeys.txt
 *.keys
+*.keyssandbox

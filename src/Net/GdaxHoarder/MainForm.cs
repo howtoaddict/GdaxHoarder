@@ -35,7 +35,14 @@ namespace GdaxHoarder
         {
             var status = await _api.Account.ListAccounts();
 
-            var x = status.ToString();
+            var sb = new StringBuilder();
+            foreach (var item in status.Accounts)
+            {
+                sb.AppendFormat("{0} - {1}", item.Currency, item.Available);
+                sb.AppendLine();
+            }
+
+            MessageBox.Show(sb.ToString(), "Balances");
         }
 
         private async void btnBankDeposit_Click(object sender, EventArgs e)
@@ -53,7 +60,8 @@ namespace GdaxHoarder
             var resp = await _api.Deposits.PaymentMethod(numDeposit.Value, "USD", ach.Id);
             if (httpSuccess(resp, btnBankDeposit))
             {
-                var str = "Deposit successfuly posted, payout at: " + resp.PayoutAt;
+                var str = String.Format("Deposit successfuly posted! {0} {1} will be in account by {2}",
+                    resp.Amount.ToString("N0"), resp.Currency, resp.PayoutAt);
                 MessageBox.Show(str, "Deposit Posted");
             }
         }

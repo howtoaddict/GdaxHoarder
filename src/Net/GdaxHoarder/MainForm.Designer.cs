@@ -68,7 +68,7 @@
             this.numDeposit.Size = new System.Drawing.Size(170, 20);
             this.numDeposit.TabIndex = 1;
             this.numDeposit.Value = new decimal(new int[] {
-            14,
+            140,
             0,
             0,
             0});
@@ -85,7 +85,7 @@
             this.numBtc.Size = new System.Drawing.Size(170, 20);
             this.numBtc.TabIndex = 3;
             this.numBtc.Value = new decimal(new int[] {
-            2,
+            10,
             0,
             0,
             0});
@@ -111,7 +111,7 @@
             this.numEth.Size = new System.Drawing.Size(170, 20);
             this.numEth.TabIndex = 5;
             this.numEth.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
@@ -137,7 +137,7 @@
             this.numLtc.Size = new System.Drawing.Size(170, 20);
             this.numLtc.TabIndex = 7;
             this.numLtc.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
@@ -157,7 +157,7 @@
             this.btnMain.Name = "btnMain";
             this.btnMain.Size = new System.Drawing.Size(108, 23);
             this.btnMain.TabIndex = 8;
-            this.btnMain.Text = "Does something";
+            this.btnMain.Text = "Check Status";
             this.btnMain.UseVisualStyleBackColor = true;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
