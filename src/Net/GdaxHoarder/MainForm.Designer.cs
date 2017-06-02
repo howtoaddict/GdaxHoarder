@@ -30,20 +30,20 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.numDeposit = new System.Windows.Forms.NumericUpDown();
-            this.numBtcUsd = new System.Windows.Forms.NumericUpDown();
+            this.numBtc = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numEth = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.numLtc = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.btnMain = new System.Windows.Forms.Button();
-            this.btnBuyBtc = new System.Windows.Forms.Button();
-            this.btnBuyEth = new System.Windows.Forms.Button();
-            this.btnBuyLtc = new System.Windows.Forms.Button();
+            this.btnBtc = new System.Windows.Forms.Button();
+            this.btnEth = new System.Windows.Forms.Button();
+            this.btnLtc = new System.Windows.Forms.Button();
             this.btnBankDeposit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numDeposit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBtcUsd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBtc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLtc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,18 +73,18 @@
             0,
             0});
             // 
-            // numBtcUsd
+            // numBtc
             // 
-            this.numBtcUsd.Location = new System.Drawing.Point(218, 33);
-            this.numBtcUsd.Maximum = new decimal(new int[] {
+            this.numBtc.Location = new System.Drawing.Point(218, 33);
+            this.numBtc.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numBtcUsd.Name = "numBtcUsd";
-            this.numBtcUsd.Size = new System.Drawing.Size(170, 20);
-            this.numBtcUsd.TabIndex = 3;
-            this.numBtcUsd.Value = new decimal(new int[] {
+            this.numBtc.Name = "numBtc";
+            this.numBtc.Size = new System.Drawing.Size(170, 20);
+            this.numBtc.TabIndex = 3;
+            this.numBtc.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -99,18 +99,18 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Daily BTC buy";
             // 
-            // numericUpDown3
+            // numEth
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(218, 59);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.numEth.Location = new System.Drawing.Point(218, 59);
+            this.numEth.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(170, 20);
-            this.numericUpDown3.TabIndex = 5;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.numEth.Name = "numEth";
+            this.numEth.Size = new System.Drawing.Size(170, 20);
+            this.numEth.TabIndex = 5;
+            this.numEth.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -161,34 +161,35 @@
             this.btnMain.UseVisualStyleBackColor = true;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
-            // btnBuyBtc
+            // btnBtc
             // 
-            this.btnBuyBtc.Location = new System.Drawing.Point(394, 30);
-            this.btnBuyBtc.Name = "btnBuyBtc";
-            this.btnBuyBtc.Size = new System.Drawing.Size(108, 23);
-            this.btnBuyBtc.TabIndex = 9;
-            this.btnBuyBtc.Text = "Buy BTC";
-            this.btnBuyBtc.UseVisualStyleBackColor = true;
-            this.btnBuyBtc.Click += new System.EventHandler(this.btnBuyBtc_Click);
+            this.btnBtc.Location = new System.Drawing.Point(394, 30);
+            this.btnBtc.Name = "btnBtc";
+            this.btnBtc.Size = new System.Drawing.Size(108, 23);
+            this.btnBtc.TabIndex = 9;
+            this.btnBtc.Text = "Buy BTC";
+            this.btnBtc.UseVisualStyleBackColor = true;
+            this.btnBtc.Click += new System.EventHandler(this.btnBuyBtc_Click);
             // 
-            // btnBuyEth
+            // btnEth
             // 
-            this.btnBuyEth.Location = new System.Drawing.Point(394, 56);
-            this.btnBuyEth.Name = "btnBuyEth";
-            this.btnBuyEth.Size = new System.Drawing.Size(108, 23);
-            this.btnBuyEth.TabIndex = 10;
-            this.btnBuyEth.Text = "Buy ETH";
-            this.btnBuyEth.UseVisualStyleBackColor = true;
+            this.btnEth.Location = new System.Drawing.Point(394, 56);
+            this.btnEth.Name = "btnEth";
+            this.btnEth.Size = new System.Drawing.Size(108, 23);
+            this.btnEth.TabIndex = 10;
+            this.btnEth.Text = "Buy ETH";
+            this.btnEth.UseVisualStyleBackColor = true;
+            this.btnEth.Click += new System.EventHandler(this.btnBuyEth_Click);
             // 
-            // btnBuyLtc
+            // btnLtc
             // 
-            this.btnBuyLtc.Location = new System.Drawing.Point(394, 82);
-            this.btnBuyLtc.Name = "btnBuyLtc";
-            this.btnBuyLtc.Size = new System.Drawing.Size(108, 23);
-            this.btnBuyLtc.TabIndex = 11;
-            this.btnBuyLtc.Text = "Buy LTC";
-            this.btnBuyLtc.UseVisualStyleBackColor = true;
-            this.btnBuyLtc.Click += new System.EventHandler(this.btnBuyLtc_Click);
+            this.btnLtc.Location = new System.Drawing.Point(394, 82);
+            this.btnLtc.Name = "btnLtc";
+            this.btnLtc.Size = new System.Drawing.Size(108, 23);
+            this.btnLtc.TabIndex = 11;
+            this.btnLtc.Text = "Buy LTC";
+            this.btnLtc.UseVisualStyleBackColor = true;
+            this.btnLtc.Click += new System.EventHandler(this.btnBuyLtc_Click);
             // 
             // btnBankDeposit
             // 
@@ -206,15 +207,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 200);
             this.Controls.Add(this.btnBankDeposit);
-            this.Controls.Add(this.btnBuyLtc);
-            this.Controls.Add(this.btnBuyEth);
-            this.Controls.Add(this.btnBuyBtc);
+            this.Controls.Add(this.btnLtc);
+            this.Controls.Add(this.btnEth);
+            this.Controls.Add(this.btnBtc);
             this.Controls.Add(this.btnMain);
             this.Controls.Add(this.numLtc);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.numEth);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.numBtcUsd);
+            this.Controls.Add(this.numBtc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numDeposit);
             this.Controls.Add(this.label1);
@@ -222,8 +223,8 @@
             this.Name = "MainForm";
             this.Text = "GDax Hoarder by http://howtoaddict.com";
             ((System.ComponentModel.ISupportInitialize)(this.numDeposit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBtcUsd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBtc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLtc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -234,16 +235,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numDeposit;
-        private System.Windows.Forms.NumericUpDown numBtcUsd;
+        private System.Windows.Forms.NumericUpDown numBtc;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numEth;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numLtc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnMain;
-        private System.Windows.Forms.Button btnBuyBtc;
-        private System.Windows.Forms.Button btnBuyEth;
-        private System.Windows.Forms.Button btnBuyLtc;
+        private System.Windows.Forms.Button btnBtc;
+        private System.Windows.Forms.Button btnEth;
+        private System.Windows.Forms.Button btnLtc;
         private System.Windows.Forms.Button btnBankDeposit;
     }
 }

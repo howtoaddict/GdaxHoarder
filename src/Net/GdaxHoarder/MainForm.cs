@@ -38,13 +38,9 @@ namespace GdaxHoarder
             var x = status.ToString();
         }
 
-        private void btnBuyLtc_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private async void btnBankDeposit_Click(object sender, EventArgs e)
         {
+            preRequest(btnBankDeposit);
             var methods = await _api.PaymentMethods.GetPaymentMethodsAsync();
 
             var ach = methods.Items.FirstOrDefault(a => a.Type == "ach_bank_account");
@@ -54,37 +50,54 @@ namespace GdaxHoarder
                 return;
             }
 
-            var result = await _api.Deposits.PaymentMethod(
-                numDeposit.Value,
-                "USD",
-                ach.Id);
-
-            var displayString = "Error: " + result.HttpResponse.ContentBody;
-            if (result.HttpResponse.IsSuccessStatusCode)
-                displayString = "Deposit successfuly posted, payout at: " + result.PayoutAt;
-
-            MessageBox.Show(displayString);
-        }
-
-        private async void btnBuyBtc_Click(object sender, EventArgs e)
-        {
-            var req = new OrdersMarketRequest
+            var resp = await _api.Deposits.PaymentMethod(numDeposit.Value, "USD", ach.Id);
+            if (httpSuccess(resp, btnBankDeposit))
             {
-                Side = "buy",
-                ProductId = "BTC-USD",
-                Funds = numBtcUsd.Value.ToString()
-            };
-
-            var resp = await _api.Orders.PostOrderMarket(req);
-            if (httpSuccess(resp))
-            {
-                var str = String.Format("Order {0} placed at {1}. Settled: {2}",
-                    resp.Id, resp.CreatedAt, resp.Settled);
-                MessageBox.Show(str, "Order Placed");
+                var str = "Deposit successfuly posted, payout at: " + resp.PayoutAt;
+                MessageBox.Show(str, "Deposit Posted");
             }
         }
 
-        private bool httpSuccess(ExchangeResponseGenericBase resp)
+        private void btnBuyBtc_Click(object sender, EventArgs e)
+        {
+            processMarketOrder(btnBtc, "BTC-USD", numBtc.Value);
+        }
+
+        private void btnBuyEth_Click(object sender, EventArgs e)
+        {
+            processMarketOrder(btnEth, "ETH-USD", numEth.Value);
+        }
+
+        private void btnBuyLtc_Click(object sender, EventArgs e)
+        {
+            processMarketOrder(btnLtc, "LTC-USD", numLtc.Value);
+        }
+
+        private void preRequest(Button btn)
+        {
+            btn.Enabled = false;
+        }
+
+        private async void processMarketOrder(Button btn, string productId, decimal funds)
+        {
+            preRequest(btn);
+            var req = new OrdersMarketRequest
+            {
+                Side = "buy",
+                ProductId = productId,
+                Funds = funds.ToString()
+            };
+
+            var resp = await _api.Orders.PostOrderMarket(req);
+            if (httpSuccess(resp, btn))
+            {
+                var str = String.Format("Order {0} placed at {1}. Settled: {2}",
+                    resp.Id, resp.CreatedAt, resp.Settled);
+                MessageBox.Show(str, productId +" Order Placed");
+            }
+        }
+
+        private bool httpSuccess(ExchangeResponseGenericBase resp, Button btn)
         {
             var httpResp = resp.HttpResponse;
             if (!httpResp.IsSuccessStatusCode)
@@ -94,6 +107,7 @@ namespace GdaxHoarder
                     "Error - "+ httpResp.StatusCode);
             }
 
+            btn.Enabled = true;
             return httpResp.IsSuccessStatusCode;
         }
     }
