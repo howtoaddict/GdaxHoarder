@@ -45,7 +45,7 @@ namespace GdaxHoarder
         {
             var methods = await _api.PaymentMethods.GetPaymentMethodsAsync();
 
-            var ach = methods.PaymentMethods.FirstOrDefault(a => a.Type == "ach_bank_account");
+            var ach = methods.Items.FirstOrDefault(a => a.Type == "ach_bank_account");
             if (ach == null)
             {
                 MessageBox.Show("Please define ACH Bank Deposit in your account before proceeding");
