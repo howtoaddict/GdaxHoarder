@@ -18,9 +18,9 @@ using System.Windows.Forms;
 
 namespace GdaxHoarder
 {
-    public partial class MainForm : Form
+    public partial class OldMainForm : Form
     {
-        public MainForm()
+        public OldMainForm()
         {
             InitializeComponent();
 
