@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB, Version=3.1.0.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.3.1.1\lib\net35\LiteDB.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,7 +50,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditBurdenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditBurdenForm.Designer.cs">
+      <DependentUpon>AddEditBurdenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Entities\Burden.cs" />
+    <Compile Include="Data\Entities\BurdenExecLog.cs" />
+    <Compile Include="Data\EntityTypes\BurdenType.cs" />
+    <Compile Include="Data\EntityTypes\GdaxCurrency.cs" />
+    <Compile Include="Data\EntityTypes\RepeatUnits.cs" />
+    <Compile Include="Data\Validators\BurdenValidator.cs" />
     <Compile Include="GdaxSettings.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OldMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +77,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddEditBurdenForm.resx">
+      <DependentUpon>AddEditBurdenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OldMainForm.resx">
       <DependentUpon>OldMainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +95,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\GdaxHoarder.Data.Entities.Burden.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,6 +116,7 @@
       <Name>CoinbaseExchange.NET</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -16,7 +16,7 @@ namespace GdaxHoarder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OldMainForm());
+            Application.Run(new MainForm());
         }
     }
 }
