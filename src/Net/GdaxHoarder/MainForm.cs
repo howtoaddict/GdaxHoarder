@@ -23,6 +23,8 @@ namespace GdaxHoarder
         private void MainForm_Load(object sender, EventArgs e)
         {
             loadBurdens();
+
+            timer1.Start();
         }
 
         private void btnAddNewBurden_Click(object sender, EventArgs e)
@@ -78,6 +80,38 @@ namespace GdaxHoarder
 
             if (e.ColumnIndex == 2)
                 e.Value = "Delete";
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            var refreshAfter = false;
+            using (var db = new LiteDatabase(@"C:\MyData.db"))
+            {
+                var table = db.GetCollection<Burden>("burdens");
+                var list = table.FindAll();
+
+                foreach (var task in list)
+                {
+                    if (task.NextRunTime < DateTime.Now)
+                    {
+                        TaskExecutor.Execute(task);
+
+                        task.NextRunTime = Burden.CalcNextRuntime(
+                            task.NextRunTime, task.RepeatUnit, task.RepeatValue);
+                        if (task.NextRunTime < DateTime.Now)
+                        {
+                            task.NextRunTime = Burden.CalcNextRuntime(
+                            DateTime.Now, task.RepeatUnit, task.RepeatValue);
+                        }
+
+                        table.Update(task);
+                        refreshAfter = true;
+                    }
+                }
+            }
+
+            if (refreshAfter)
+                loadBurdens();
         }
     }
 }

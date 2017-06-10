@@ -47,5 +47,19 @@ namespace GdaxHoarder.Data.Entities
 
             return base.ToString();
         }
+
+        public static DateTime CalcNextRuntime(DateTime dateTime, RepeatUnits unit, int val)
+        {
+            if (unit == RepeatUnits.Second)
+                return dateTime.AddSeconds(val);
+            else if(unit == RepeatUnits.Minute)
+                return dateTime.AddMinutes(val);
+            else if (unit == RepeatUnits.Hour)
+                return dateTime.AddHours(val);
+            else if (unit == RepeatUnits.Day)
+                return dateTime.AddDays(val);
+            else
+                return DateTime.MaxValue;
+        }
     }
 }
