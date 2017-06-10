@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GdaxHoarder.Data.Entities;
+using GdaxHoarder.Data.EntityViews;
+using LiteDB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +23,28 @@ namespace GdaxHoarder
         private void btnAddNewBurden_Click(object sender, EventArgs e)
         {
             var form = new AddEditBurdenForm();
-            form.ShowDialog(this);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                loadBurdens();
+            }
+        }
+
+        private void loadBurdens()
+        {
+            using (var db = new LiteDatabase(@"C:\MyData.db"))
+            {
+                var table = db.GetCollection<Burden>("burdens");
+                var list = table.FindAll();
+
+                bindingSource1.Clear();
+                foreach (var o in list)
+                    bindingSource1.Add(new BurdenView(o));
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            loadBurdens();
         }
     }
 }
