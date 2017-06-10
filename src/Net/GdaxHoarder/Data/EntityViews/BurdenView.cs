@@ -11,11 +11,15 @@ namespace GdaxHoarder.Data.EntityViews
     {
         public BurdenView(Burden burden)
         {
-            Task = burden.ToString();
+            BurdenId = burden.BurdenId;
             NextRunTime = burden.NextRunTime;
+
+            Task = burden.ToString();
         }
 
-        public string Task { get; set; }
+        public int BurdenId { get; set; }
         public DateTime NextRunTime { get; set; }
+
+        public string Task { get; set; }
     }
 }
