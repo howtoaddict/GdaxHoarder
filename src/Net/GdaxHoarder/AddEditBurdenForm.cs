@@ -54,7 +54,7 @@ namespace GdaxHoarder
             {
                 using (var db = new LiteDatabase(@"C:\MyData.db"))
                 {
-                    var table = db.GetCollection<Burden>("burdens");
+                    var table = db.GetCollection<Burden>();
                     table.Insert(populatedObject);
                 }
                 this.DialogResult = DialogResult.OK;

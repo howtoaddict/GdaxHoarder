@@ -4,6 +4,7 @@ using CoinbaseExchange.NET.Endpoints;
 using CoinbaseExchange.NET.Endpoints.Orders;
 using GdaxHoarder.Data.Entities;
 using GdaxHoarder.Data.EntityTypes;
+using LiteDB;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -71,10 +72,22 @@ namespace GdaxHoarder
             }
         }
 
-        private static void taskResult(Burden burden, bool success, string log)
-        {
-            var format = String.Format("{0} | {1} | {2}", burden.ToString(), success, log);
-            Debug.WriteLine(format);
+        private static void taskResult(Burden burden, bool success, string result)
+        {            
+            using (var db = new LiteDatabase(@"C:\MyData.db"))
+            {
+                var dbLog = new BurdenLog
+                {
+                    BurdenName = burden.ToString(),
+                    BurdenLogName = result,
+                    Created = DateTime.Now,
+                    Success = success
+                };
+                var table = db.GetCollection<BurdenLog>();
+                table.Insert(dbLog);
+                
+                Debug.WriteLine(dbLog.ToString());
+            }
         }
 
         private static bool httpSuccess(Burden burden, ExchangeResponseGenericBase resp)

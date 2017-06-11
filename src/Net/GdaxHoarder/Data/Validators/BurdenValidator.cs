@@ -25,7 +25,7 @@ namespace GdaxHoarder.Data.Validators
             if (Val.BurdenTypeAmount <= 0)
                 Errors.Add("numAmount", "Must be greater than 0");
 
-            if (Val.RepeatTotalSeconds <= 60)
+            if (Val.RepeatTotalSeconds < 60)
                 Errors.Add("numRepeatValue", "Must be 60 seconds or more");
 
             return Errors.Count == 0; 

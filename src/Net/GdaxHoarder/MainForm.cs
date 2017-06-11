@@ -23,8 +23,22 @@ namespace GdaxHoarder
         private void MainForm_Load(object sender, EventArgs e)
         {
             loadBurdens();
+            loadLog();
 
             timer1.Start();
+        }
+
+        private void loadLog()
+        {
+            var list = new List<string>();
+
+            listBox1.Items.Clear();
+            using (var db = new LiteDatabase(@"C:\MyData.db"))
+            {
+                var table = db.GetCollection<BurdenLog>();
+                foreach (var item in table.FindAll())
+                    listBox1.Items.Insert(0, item);
+            }
         }
 
         private void btnAddNewBurden_Click(object sender, EventArgs e)
@@ -40,7 +54,7 @@ namespace GdaxHoarder
         {
             using (var db = new LiteDatabase(@"C:\MyData.db"))
             {
-                var table = db.GetCollection<Burden>("burdens");
+                var table = db.GetCollection<Burden>();
                 var list = table.FindAll();
 
                 bindingSource1.Clear();
@@ -65,7 +79,7 @@ namespace GdaxHoarder
 
                 using (var db = new LiteDatabase(@"C:\MyData.db"))
                 {
-                    var table = db.GetCollection<Burden>("burdens");
+                    var table = db.GetCollection<Burden>();
                     table.Delete(new BsonValue(item.BurdenId));
                 }
 
@@ -87,7 +101,7 @@ namespace GdaxHoarder
             var refreshAfter = false;
             using (var db = new LiteDatabase(@"C:\MyData.db"))
             {
-                var table = db.GetCollection<Burden>("burdens");
+                var table = db.GetCollection<Burden>();
                 var list = table.FindAll();
 
                 foreach (var task in list)
@@ -111,7 +125,15 @@ namespace GdaxHoarder
             }
 
             if (refreshAfter)
-                loadBurdens();
+            {
+                this.BeginInvoke(new MethodInvoker(loadBurdens));
+                this.BeginInvoke(new MethodInvoker(loadLog));
+            }
+        }
+
+        private void btnLogRefresh_Click(object sender, EventArgs e)
+        {
+            loadLog();
         }
     }
 }

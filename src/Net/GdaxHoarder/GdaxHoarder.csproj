@@ -57,7 +57,7 @@
       <DependentUpon>AddEditBurdenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Entities\Burden.cs" />
-    <Compile Include="Data\Entities\BurdenExecLog.cs" />
+    <Compile Include="Data\Entities\BurdenLog.cs" />
     <Compile Include="Data\EntityTypes\BurdenType.cs" />
     <Compile Include="Data\EntityTypes\GdaxCurrency.cs" />
     <Compile Include="Data\EntityTypes\RepeatUnits.cs" />
