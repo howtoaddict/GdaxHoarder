@@ -1,4 +1,5 @@
-﻿using GdaxHoarder.Data.Entities;
+﻿using GdaxHoarder.Data;
+using GdaxHoarder.Data.Entities;
 using GdaxHoarder.Data.EntityTypes;
 using GdaxHoarder.Data.Validators;
 using LiteDB;
@@ -52,16 +53,14 @@ namespace GdaxHoarder
             var validator = new BurdenValidator(populatedObject);
             if (validator.ValidateAdd())
             {
-                using (var db = new LiteDatabase(@"C:\MyData.db"))
-                {
-                    var table = db.GetCollection<Burden>();
-                    table.Insert(populatedObject);
-                }
+                var table = DbWrapper.Db.GetCollection<Burden>();
+                table.Insert(populatedObject);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
-                DisplayErrors(validator.Errors);        
+                DisplayErrors(validator.Errors);
         }
 
         private Burden getFormData()
@@ -88,7 +87,7 @@ namespace GdaxHoarder
             errorProviders.Clear();
         }
 
-        private void DisplayErrors(Dictionary<string,string> errors)
+        private void DisplayErrors(Dictionary<string, string> errors)
         {
             foreach (var error in errors)
             {

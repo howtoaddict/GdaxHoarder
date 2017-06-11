@@ -1,4 +1,5 @@
-﻿using GdaxHoarder.Data.Entities;
+﻿using GdaxHoarder.Data;
+using GdaxHoarder.Data.Entities;
 using GdaxHoarder.Data.EntityViews;
 using LiteDB;
 using System;
@@ -33,12 +34,12 @@ namespace GdaxHoarder
             var list = new List<string>();
 
             listBox1.Items.Clear();
-            using (var db = new LiteDatabase(@"C:\MyData.db"))
-            {
-                var table = db.GetCollection<BurdenLog>();
-                foreach (var item in table.FindAll())
-                    listBox1.Items.Insert(0, item);
-            }
+
+            var table = DbWrapper.Db.GetCollection<BurdenLog>();
+            foreach (var item in table.FindAll())
+                listBox1.Items.Insert(0, item);
+
+            listBox1.Refresh();
         }
 
         private void btnAddNewBurden_Click(object sender, EventArgs e)
@@ -52,15 +53,12 @@ namespace GdaxHoarder
 
         private void loadBurdens()
         {
-            using (var db = new LiteDatabase(@"C:\MyData.db"))
-            {
-                var table = db.GetCollection<Burden>();
-                var list = table.FindAll();
+            var table = DbWrapper.Db.GetCollection<Burden>();
+            var list = table.FindAll();
 
-                bindingSource1.Clear();
-                foreach (var o in list)
-                    bindingSource1.Add(new BurdenView(o));
-            }
+            bindingSource1.Clear();
+            foreach (var o in list)
+                bindingSource1.Add(new BurdenView(o));
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -77,11 +75,8 @@ namespace GdaxHoarder
             {
                 var item = bindingSource1[e.RowIndex] as BurdenView;
 
-                using (var db = new LiteDatabase(@"C:\MyData.db"))
-                {
-                    var table = db.GetCollection<Burden>();
-                    table.Delete(new BsonValue(item.BurdenId));
-                }
+                var table = DbWrapper.Db.GetCollection<Burden>();
+                table.Delete(new BsonValue(item.BurdenId));
 
                 loadBurdens();
             }
@@ -99,28 +94,26 @@ namespace GdaxHoarder
         private void timer1_Tick(object sender, EventArgs e)
         {
             var refreshAfter = false;
-            using (var db = new LiteDatabase(@"C:\MyData.db"))
-            {
-                var table = db.GetCollection<Burden>();
-                var list = table.FindAll();
 
-                foreach (var task in list)
+            var table = DbWrapper.Db.GetCollection<Burden>();
+            var list = table.FindAll();
+
+            foreach (var task in list)
+            {
+                if (task.NextRunTime < DateTime.Now)
                 {
+                    TaskExecutor.Execute(task);
+
+                    task.NextRunTime = Burden.CalcNextRuntime(
+                        task.NextRunTime, task.RepeatUnit, task.RepeatValue);
                     if (task.NextRunTime < DateTime.Now)
                     {
-                        TaskExecutor.Execute(task);
-
                         task.NextRunTime = Burden.CalcNextRuntime(
-                            task.NextRunTime, task.RepeatUnit, task.RepeatValue);
-                        if (task.NextRunTime < DateTime.Now)
-                        {
-                            task.NextRunTime = Burden.CalcNextRuntime(
-                            DateTime.Now, task.RepeatUnit, task.RepeatValue);
-                        }
-
-                        table.Update(task);
-                        refreshAfter = true;
+                        DateTime.Now, task.RepeatUnit, task.RepeatValue);
                     }
+
+                    table.Update(task);
+                    refreshAfter = true;
                 }
             }
 

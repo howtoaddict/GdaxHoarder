@@ -56,6 +56,7 @@
     <Compile Include="AddEditBurdenForm.Designer.cs">
       <DependentUpon>AddEditBurdenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\DbWrapper.cs" />
     <Compile Include="Data\Entities\Burden.cs" />
     <Compile Include="Data\Entities\BurdenLog.cs" />
     <Compile Include="Data\EntityTypes\BurdenType.cs" />
