@@ -15,7 +15,10 @@ namespace GdaxHoarder.Data
              get
             {
                 if (_db == null)
-                    _db = new LiteDatabase(@"C:\MyData.db");
+                {
+                    var dbPath = AppDomain.CurrentDomain.BaseDirectory + "\\MyData.db";
+                    _db = new LiteDatabase(dbPath);
+                }
 
                 return _db;
             }
