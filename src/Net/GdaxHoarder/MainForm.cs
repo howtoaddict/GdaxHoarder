@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace GdaxHoarder
 
             bindingLog.Clear();
             foreach (var o in list)
-                bindingLog.Add(o);
+                bindingLog.Insert(0, o);
         }
 
         private void btnAddNewBurden_Click(object sender, EventArgs e)
@@ -116,11 +117,16 @@ namespace GdaxHoarder
 
             if (refreshAfter)
             {
-                DbWrapper.Dispose();
-
-                this.BeginInvoke(new MethodInvoker(loadBurdens));
-                this.BeginInvoke(new MethodInvoker(loadLog));
+                ThreadPool.QueueUserWorkItem(new WaitCallback(delayedRefresh));
             }
+        }
+
+        private void delayedRefresh(object state)
+        {
+            Thread.Sleep(1000);
+
+            this.BeginInvoke(new MethodInvoker(loadBurdens));
+            this.BeginInvoke(new MethodInvoker(loadLog));
         }
 
         private void btnLogRefresh_Click(object sender, EventArgs e)
