@@ -10,6 +10,7 @@ using LiteDB;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,11 @@ namespace GdaxHoarder
     {
         static TaskExecutor()
         {
-            var settings = GdaxSettings.Parse("../../../../.keys");
+            var keyPath = ".keys";
+            if (!File.Exists(keyPath))
+                keyPath = "../../../../.keys";
+
+            var settings = GdaxSettings.Parse(keyPath);
             ExchangeClientBase.IsSandbox = settings.IsSandbox;
 
             _api = new GdaxApi(settings.ToAuthContainer());
