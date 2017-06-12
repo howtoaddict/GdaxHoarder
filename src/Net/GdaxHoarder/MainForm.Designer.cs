@@ -36,10 +36,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gridBurdenLog = new System.Windows.Forms.DataGridView();
             this.btnLogRefresh = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.gridBurdenLog = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblUsd = new System.Windows.Forms.Label();
+            this.lblBtc = new System.Windows.Forms.Label();
+            this.lblEth = new System.Windows.Forms.Label();
+            this.lblLtc = new System.Windows.Forms.Label();
             this.bindingLog = new System.Windows.Forms.BindingSource(this.components);
             this.nextRunTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -52,6 +57,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdenLog)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -108,7 +114,7 @@
             this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.btnAddNewBurden);
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(623, 198);
             this.groupBox1.TabIndex = 3;
@@ -129,12 +135,31 @@
             // 
             this.groupBox2.Controls.Add(this.gridBurdenLog);
             this.groupBox2.Controls.Add(this.btnLogRefresh);
-            this.groupBox2.Location = new System.Drawing.Point(12, 216);
+            this.groupBox2.Location = new System.Drawing.Point(12, 263);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(623, 213);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Log";
+            // 
+            // gridBurdenLog
+            // 
+            this.gridBurdenLog.AllowUserToAddRows = false;
+            this.gridBurdenLog.AllowUserToDeleteRows = false;
+            this.gridBurdenLog.AutoGenerateColumns = false;
+            this.gridBurdenLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridBurdenLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.burdenLogIdDataGridViewTextBoxColumn,
+            this.createdDataGridViewTextBoxColumn,
+            this.burdenNameDataGridViewTextBoxColumn,
+            this.successDataGridViewCheckBoxColumn,
+            this.burdenLogNameDataGridViewTextBoxColumn});
+            this.gridBurdenLog.DataSource = this.bindingLog;
+            this.gridBurdenLog.Location = new System.Drawing.Point(6, 19);
+            this.gridBurdenLog.Name = "gridBurdenLog";
+            this.gridBurdenLog.ReadOnly = true;
+            this.gridBurdenLog.Size = new System.Drawing.Size(608, 160);
+            this.gridBurdenLog.TabIndex = 5;
             // 
             // btnLogRefresh
             // 
@@ -160,24 +185,54 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // gridBurdenLog
+            // groupBox3
             // 
-            this.gridBurdenLog.AllowUserToAddRows = false;
-            this.gridBurdenLog.AllowUserToDeleteRows = false;
-            this.gridBurdenLog.AutoGenerateColumns = false;
-            this.gridBurdenLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridBurdenLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.burdenLogIdDataGridViewTextBoxColumn,
-            this.createdDataGridViewTextBoxColumn,
-            this.burdenNameDataGridViewTextBoxColumn,
-            this.successDataGridViewCheckBoxColumn,
-            this.burdenLogNameDataGridViewTextBoxColumn});
-            this.gridBurdenLog.DataSource = this.bindingLog;
-            this.gridBurdenLog.Location = new System.Drawing.Point(6, 19);
-            this.gridBurdenLog.Name = "gridBurdenLog";
-            this.gridBurdenLog.ReadOnly = true;
-            this.gridBurdenLog.Size = new System.Drawing.Size(608, 160);
-            this.gridBurdenLog.TabIndex = 5;
+            this.groupBox3.Controls.Add(this.lblLtc);
+            this.groupBox3.Controls.Add(this.lblEth);
+            this.groupBox3.Controls.Add(this.lblBtc);
+            this.groupBox3.Controls.Add(this.lblUsd);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(623, 41);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Balances";
+            // 
+            // lblUsd
+            // 
+            this.lblUsd.AutoSize = true;
+            this.lblUsd.Location = new System.Drawing.Point(9, 18);
+            this.lblUsd.Name = "lblUsd";
+            this.lblUsd.Size = new System.Drawing.Size(33, 13);
+            this.lblUsd.TabIndex = 0;
+            this.lblUsd.Text = "USD:";
+            // 
+            // lblBtc
+            // 
+            this.lblBtc.AutoSize = true;
+            this.lblBtc.Location = new System.Drawing.Point(155, 18);
+            this.lblBtc.Name = "lblBtc";
+            this.lblBtc.Size = new System.Drawing.Size(31, 13);
+            this.lblBtc.TabIndex = 1;
+            this.lblBtc.Text = "BTC:";
+            // 
+            // lblEth
+            // 
+            this.lblEth.AutoSize = true;
+            this.lblEth.Location = new System.Drawing.Point(292, 18);
+            this.lblEth.Name = "lblEth";
+            this.lblEth.Size = new System.Drawing.Size(32, 13);
+            this.lblEth.TabIndex = 2;
+            this.lblEth.Text = "ETH:";
+            // 
+            // lblLtc
+            // 
+            this.lblLtc.AutoSize = true;
+            this.lblLtc.Location = new System.Drawing.Point(436, 18);
+            this.lblLtc.Name = "lblLtc";
+            this.lblLtc.Size = new System.Drawing.Size(30, 13);
+            this.lblLtc.TabIndex = 3;
+            this.lblLtc.Text = "LTC:";
             // 
             // bindingLog
             // 
@@ -215,11 +270,11 @@
             // 
             // burdenNameDataGridViewTextBoxColumn
             // 
-            this.burdenNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.burdenNameDataGridViewTextBoxColumn.DataPropertyName = "BurdenName";
             this.burdenNameDataGridViewTextBoxColumn.HeaderText = "BurdenName";
             this.burdenNameDataGridViewTextBoxColumn.Name = "burdenNameDataGridViewTextBoxColumn";
             this.burdenNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.burdenNameDataGridViewTextBoxColumn.Width = 120;
             // 
             // successDataGridViewCheckBoxColumn
             // 
@@ -241,7 +296,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 439);
+            this.ClientSize = new System.Drawing.Size(647, 488);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
@@ -252,6 +308,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdenLog)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -273,6 +331,11 @@
         private System.Windows.Forms.Button btnLogRefresh;
         private System.Windows.Forms.DataGridView gridBurdenLog;
         private System.Windows.Forms.BindingSource bindingLog;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblLtc;
+        private System.Windows.Forms.Label lblEth;
+        private System.Windows.Forms.Label lblBtc;
+        private System.Windows.Forms.Label lblUsd;
         private System.Windows.Forms.DataGridViewTextBoxColumn burdenLogIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn burdenNameDataGridViewTextBoxColumn;

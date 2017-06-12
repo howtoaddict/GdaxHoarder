@@ -24,10 +24,33 @@ namespace GdaxHoarder
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            loadBurdens();
-            loadLog();
+            reloadData();
 
             timer1.Start();
+        }
+
+        private void reloadData()
+        {
+            refreshBalances();
+            loadBurdens();
+            loadLog();
+        }
+
+        private async void refreshBalances()
+        {
+            var status = await TaskExecutor.AccountBalances();
+            
+            foreach (var balance in status.Accounts)
+            {
+                if (balance.Currency == "USD")
+                    lblUsd.Text = String.Format("USD: {0:N2}", balance.Balance);
+                else if (balance.Currency == "BTC")
+                    lblBtc.Text = String.Format("BTC: {0:N8}", balance.Balance);
+                else if (balance.Currency == "ETH")
+                    lblEth.Text = String.Format("ETH: {0:N8}", balance.Balance);
+                else if (balance.Currency == "LTC")
+                    lblLtc.Text = String.Format("LTC: {0:N8}", balance.Balance);
+            }
         }
 
         private void loadLog()
@@ -125,8 +148,7 @@ namespace GdaxHoarder
         {
             Thread.Sleep(1000);
 
-            this.BeginInvoke(new MethodInvoker(loadBurdens));
-            this.BeginInvoke(new MethodInvoker(loadLog));
+            this.BeginInvoke(new MethodInvoker(reloadData));
         }
 
         private void btnLogRefresh_Click(object sender, EventArgs e)

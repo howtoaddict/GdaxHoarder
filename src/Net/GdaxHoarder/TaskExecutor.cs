@@ -1,6 +1,7 @@
 ﻿using CoinbaseExchange.NET.Core;
 using CoinbaseExchange.NET.CoreGenerics;
 using CoinbaseExchange.NET.Endpoints;
+using CoinbaseExchange.NET.Endpoints.Account;
 using CoinbaseExchange.NET.Endpoints.Orders;
 using GdaxHoarder.Data;
 using GdaxHoarder.Data.Entities;
@@ -71,6 +72,12 @@ namespace GdaxHoarder
                     resp.Id, resp.CreatedAt, resp.Settled);
                 taskResult(burden, true, str);
             }
+        }
+
+        public static async Task<ListAccountsResponse> AccountBalances()
+        {
+            var status = await _api.Account.ListAccounts();
+            return status;
         }
 
         private static void taskResult(Burden burden, bool success, string result)
