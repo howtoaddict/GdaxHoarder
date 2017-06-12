@@ -100,6 +100,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GdaxHoarder.Data.Entities.Burden.datasource" />
+    <None Include="Properties\DataSources\GdaxHoarder.Data.Entities.BurdenLog.datasource" />
     <None Include="Properties\DataSources\GdaxHoarder.Data.EntityViews.BurdenView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

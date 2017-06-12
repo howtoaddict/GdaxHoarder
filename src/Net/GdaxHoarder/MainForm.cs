@@ -31,15 +31,12 @@ namespace GdaxHoarder
 
         private void loadLog()
         {
-            var list = new List<string>();
-
-            listBox1.Items.Clear();
-
             var table = DbWrapper.Db.GetCollection<BurdenLog>();
-            foreach (var item in table.FindAll())
-                listBox1.Items.Insert(0, item);
+            var list = table.FindAll();
 
-            listBox1.Refresh();
+            bindingLog.Clear();
+            foreach (var o in list)
+                bindingLog.Add(o);
         }
 
         private void btnAddNewBurden_Click(object sender, EventArgs e)
@@ -119,6 +116,8 @@ namespace GdaxHoarder
 
             if (refreshAfter)
             {
+                DbWrapper.Dispose();
+
                 this.BeginInvoke(new MethodInvoker(loadBurdens));
                 this.BeginInvoke(new MethodInvoker(loadLog));
             }
