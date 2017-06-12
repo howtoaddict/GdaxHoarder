@@ -20,6 +20,7 @@ namespace GdaxHoarder
 {
     public class TaskExecutor
     {
+        private static string BASE_CURRENCY = "USD";
         static TaskExecutor()
         {
             var keyPath = ".keys";
@@ -52,7 +53,7 @@ namespace GdaxHoarder
                 taskResult(burden, false, "Please define ACH Bank Deposit in your account before proceeding");
             }
 
-            var resp = await _api.Deposits.PaymentMethod(burden.BurdenTypeAmount, "USD", ach.Id);
+            var resp = await _api.Deposits.PaymentMethod(burden.BurdenTypeAmount, BASE_CURRENCY, ach.Id);
             if (httpSuccess(burden, resp))
             {
                 var str = String.Format("Deposit successfuly posted! {0} {1} will be in account by {2}",
@@ -63,10 +64,11 @@ namespace GdaxHoarder
 
         private static async void buyCurrency(Burden burden)
         {
+            var buyPair = burden.BurdenTypeCurrency + "-" + BASE_CURRENCY;
             var req = new OrdersMarketRequest
             {
                 Side = "buy",
-                ProductId = burden.BurdenTypeCurrency.ToString(),
+                ProductId = buyPair,
                 Funds = burden.BurdenTypeAmount.ToString()
             };
 
