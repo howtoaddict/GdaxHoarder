@@ -56,11 +56,11 @@ namespace GdaxHoarder
         private void loadLog()
         {
             var table = DbWrapper.Db.GetCollection<BurdenLog>();
-            var list = table.FindAll();
+            var list = table.Find(Query.All(Query.Descending), limit: 100);
 
             bindingLog.Clear();
             foreach (var o in list)
-                bindingLog.Insert(0, o);
+                bindingLog.Add(o);
         }
 
         private void btnAddNewBurden_Click(object sender, EventArgs e)
