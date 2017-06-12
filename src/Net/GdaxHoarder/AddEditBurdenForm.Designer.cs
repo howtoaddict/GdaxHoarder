@@ -98,6 +98,11 @@
             // numAmount
             // 
             this.numAmount.Location = new System.Drawing.Point(114, 66);
+            this.numAmount.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.numAmount.Name = "numAmount";
             this.numAmount.Size = new System.Drawing.Size(130, 20);
             this.numAmount.TabIndex = 5;
@@ -150,6 +155,11 @@
             // numRepeatValue
             // 
             this.numRepeatValue.Location = new System.Drawing.Point(114, 160);
+            this.numRepeatValue.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.numRepeatValue.Name = "numRepeatValue";
             this.numRepeatValue.Size = new System.Drawing.Size(130, 20);
             this.numRepeatValue.TabIndex = 11;
