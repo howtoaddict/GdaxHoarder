@@ -155,5 +155,21 @@ namespace GdaxHoarder
         {
             loadLog();
         }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
     }
 }
