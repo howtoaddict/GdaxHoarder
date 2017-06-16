@@ -146,7 +146,7 @@ namespace GdaxHoarder
 
         private void delayedRefresh(object state)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
             this.BeginInvoke(new MethodInvoker(reloadData));
         }
