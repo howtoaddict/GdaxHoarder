@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditBurdenForm));
             this.label1 = new System.Windows.Forms.Label();
             this.cmbBurdenTypeId = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
@@ -193,6 +194,7 @@
             this.Controls.Add(this.cmbBurdenTypeId);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEditBurdenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditBurdenForm";
