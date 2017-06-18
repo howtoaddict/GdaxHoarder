@@ -44,7 +44,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.panelAmount = new System.Windows.Forms.Panel();
             this.panelWallet = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtWalletAddr = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRepeatValue)).BeginInit();
@@ -99,7 +99,7 @@
             this.lblAmount.Location = new System.Drawing.Point(8, 5);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(75, 13);
-            this.lblAmount.TabIndex = 4;
+            this.lblAmount.TabIndex = 0;
             this.lblAmount.Text = "Amount (USD)";
             // 
             // numAmount
@@ -112,7 +112,7 @@
             0});
             this.numAmount.Name = "numAmount";
             this.numAmount.Size = new System.Drawing.Size(278, 20);
-            this.numAmount.TabIndex = 5;
+            this.numAmount.TabIndex = 1;
             // 
             // label4
             // 
@@ -188,24 +188,23 @@
             this.panelAmount.Location = new System.Drawing.Point(4, 65);
             this.panelAmount.Name = "panelAmount";
             this.panelAmount.Size = new System.Drawing.Size(377, 26);
-            this.panelAmount.TabIndex = 13;
+            this.panelAmount.TabIndex = 4;
             // 
             // panelWallet
             // 
-            this.panelWallet.Controls.Add(this.textBox1);
+            this.panelWallet.Controls.Add(this.txtWalletAddr);
             this.panelWallet.Controls.Add(this.label2);
             this.panelWallet.Location = new System.Drawing.Point(4, 93);
             this.panelWallet.Name = "panelWallet";
             this.panelWallet.Size = new System.Drawing.Size(377, 26);
-            this.panelWallet.TabIndex = 14;
+            this.panelWallet.TabIndex = 5;
             // 
-            // textBox1
+            // txtWalletAddr
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "0x5ad5769cd04681FeD900BCE3DDc877B50E83d469";
+            this.txtWalletAddr.Location = new System.Drawing.Point(92, 2);
+            this.txtWalletAddr.Name = "txtWalletAddr";
+            this.txtWalletAddr.Size = new System.Drawing.Size(278, 20);
+            this.txtWalletAddr.TabIndex = 1;
             // 
             // label2
             // 
@@ -213,7 +212,7 @@
             this.label2.Location = new System.Drawing.Point(8, 5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Wallet";
             // 
             // AddEditBurdenForm
@@ -268,7 +267,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panelAmount;
         private System.Windows.Forms.Panel panelWallet;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtWalletAddr;
         private System.Windows.Forms.Label label2;
     }
 }
