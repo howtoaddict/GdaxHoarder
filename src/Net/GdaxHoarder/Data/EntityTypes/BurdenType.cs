@@ -9,7 +9,7 @@ namespace GdaxHoarder.Data.EntityTypes
     public enum BurdenType
     {
         DepositAch = 1,
-        BuyCurrency = 2
-        //,WithdrawToWallet = 3
+        BuyCurrency = 2,
+        WithdrawToWallet = 3
     }
 }

@@ -40,10 +40,32 @@ namespace GdaxHoarder
 
         private void cmbBurden_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var currencyVisible = cmbBurdenTypeId.SelectedIndex != 0;
+            var burdenType = (BurdenType)cmbBurdenTypeId.SelectedIndex + 1;
 
-            lblCurrency.Visible = currencyVisible;
-            cmbCurrency.Visible = currencyVisible;
+            if (burdenType == BurdenType.DepositAch)
+            {
+                lblCurrency.Visible = false;
+                cmbCurrency.Visible = false;
+                panelAmount.Visible = true;
+                lblAmount.Text = "Amount (USD)";
+                panelWallet.Visible = false;
+            }
+            else if (burdenType == BurdenType.BuyCurrency)
+            {
+                lblCurrency.Visible = true;
+                cmbCurrency.Visible = true;
+                panelAmount.Visible = true;
+                lblAmount.Text = "Amount (USD)";
+                panelWallet.Visible = false;
+            }
+            else if (burdenType == BurdenType.WithdrawToWallet)
+            {
+                lblCurrency.Visible = true;
+                cmbCurrency.Visible = true;
+                panelAmount.Visible = true;
+                lblAmount.Text = "Amount";
+                panelWallet.Visible = true;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
