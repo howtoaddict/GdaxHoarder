@@ -15,6 +15,7 @@ namespace GdaxHoarder.Data.Entities
         public int BurdenId { get; set; }
         public BurdenType BurdenTypeId { get; set; }
         public GdaxCurrency BurdenTypeCurrency { get; set; }
+        public string WalletAddr { get; set; }
         public decimal BurdenTypeAmount { get; set; }
         public DateTime NextRunTime { get; set; }
         public RepeatUnits RepeatUnit { get; set; }

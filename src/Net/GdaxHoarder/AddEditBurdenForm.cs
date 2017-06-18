@@ -87,11 +87,13 @@ namespace GdaxHoarder
 
         private Burden getFormData()
         {
+            var walletAddr = String.IsNullOrWhiteSpace(txtWalletAddr.Text) ? null : txtWalletAddr.Text;
             var obj = new Burden
             {
                 BurdenTypeId = (BurdenType)(cmbBurdenTypeId.SelectedIndex + 1),
                 BurdenTypeCurrency = (GdaxCurrency)(cmbCurrency.SelectedIndex + 1),
                 BurdenTypeAmount = numAmount.Value,
+                WalletAddr = walletAddr,
                 NextRunTime = dtpNextRunTime.Value,
                 RepeatUnit = (RepeatUnits)(cmbRepeatUnit.SelectedIndex + 1),
                 RepeatValue = (int)numRepeatValue.Value

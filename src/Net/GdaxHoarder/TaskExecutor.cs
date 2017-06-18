@@ -40,6 +40,8 @@ namespace GdaxHoarder
                 depositAch(burden);
             else if (burden.BurdenTypeId == BurdenType.BuyCurrency)
                 buyCurrency(burden);
+            else if (burden.BurdenTypeId == BurdenType.WithdrawToWallet)
+                withdrawToWallet(burden);
         }
 
         private static async void depositAch(Burden burden)
@@ -77,6 +79,21 @@ namespace GdaxHoarder
             {
                 var str = String.Format("Order {0} placed at {1}. Settled: {2}",
                     resp.Id, resp.CreatedAt, resp.Settled);
+                taskResult(burden, true, str);
+            }
+        }
+
+        private static async void withdrawToWallet(Burden burden)
+        {
+            var resp = await _api.Withdrawals.Crypto(
+                burden.BurdenTypeAmount, burden.BurdenTypeCurrency.ToString(), burden.WalletAddr);
+
+            if (httpSuccess(burden, resp))
+            {
+                var str = String.Format("Withdrawal of {0} {1} requested. Transaction Id: {2}",
+                    resp.Amount,
+                    resp.Currency,
+                    resp.Id);
                 taskResult(burden, true, str);
             }
         }
