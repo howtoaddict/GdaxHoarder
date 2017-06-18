@@ -33,19 +33,11 @@
             this.btnAddNewBurden = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nextRunTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gridBurdenLog = new System.Windows.Forms.DataGridView();
-            this.burdenLogIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.burdenNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.successDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.burdenLogNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingLog = new System.Windows.Forms.BindingSource(this.components);
             this.btnLogRefresh = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -55,13 +47,21 @@
             this.lblBtc = new System.Windows.Forms.Label();
             this.lblUsd = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.burdenLogIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.burdenNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.successDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.burdenLogNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingLog = new System.Windows.Forms.BindingSource(this.components);
+            this.nextRunTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdenLog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNewBurden
@@ -69,7 +69,7 @@
             this.btnAddNewBurden.Location = new System.Drawing.Point(495, 167);
             this.btnAddNewBurden.Name = "btnAddNewBurden";
             this.btnAddNewBurden.Size = new System.Drawing.Size(119, 23);
-            this.btnAddNewBurden.TabIndex = 1;
+            this.btnAddNewBurden.TabIndex = 2;
             this.btnAddNewBurden.Text = "Add New Task";
             this.btnAddNewBurden.UseVisualStyleBackColor = true;
             this.btnAddNewBurden.Click += new System.EventHandler(this.btnAddNewBurden_Click);
@@ -91,7 +91,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(611, 142);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
@@ -104,26 +104,12 @@
             this.Task.Name = "Task";
             this.Task.ReadOnly = true;
             // 
-            // nextRunTimeDataGridViewTextBoxColumn
-            // 
-            this.nextRunTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nextRunTimeDataGridViewTextBoxColumn.DataPropertyName = "NextRunTime";
-            this.nextRunTimeDataGridViewTextBoxColumn.FillWeight = 200F;
-            this.nextRunTimeDataGridViewTextBoxColumn.HeaderText = "NextRunTime";
-            this.nextRunTimeDataGridViewTextBoxColumn.Name = "nextRunTimeDataGridViewTextBoxColumn";
-            this.nextRunTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nextRunTimeDataGridViewTextBoxColumn.Width = 97;
-            // 
             // DeleteColumn
             // 
             this.DeleteColumn.HeaderText = "Delete";
             this.DeleteColumn.Name = "DeleteColumn";
             this.DeleteColumn.ReadOnly = true;
             this.DeleteColumn.Text = "Delete";
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(GdaxHoarder.Data.EntityViews.BurdenView);
             // 
             // groupBox1
             // 
@@ -133,7 +119,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(623, 198);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tasks";
             // 
@@ -142,7 +128,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(370, 167);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(119, 23);
-            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -154,7 +140,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 263);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(623, 213);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Log";
             // 
@@ -175,58 +161,14 @@
             this.gridBurdenLog.Name = "gridBurdenLog";
             this.gridBurdenLog.ReadOnly = true;
             this.gridBurdenLog.Size = new System.Drawing.Size(608, 160);
-            this.gridBurdenLog.TabIndex = 5;
-            // 
-            // burdenLogIdDataGridViewTextBoxColumn
-            // 
-            this.burdenLogIdDataGridViewTextBoxColumn.DataPropertyName = "BurdenLogId";
-            this.burdenLogIdDataGridViewTextBoxColumn.HeaderText = "BurdenLogId";
-            this.burdenLogIdDataGridViewTextBoxColumn.Name = "burdenLogIdDataGridViewTextBoxColumn";
-            this.burdenLogIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.burdenLogIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createdDataGridViewTextBoxColumn
-            // 
-            this.createdDataGridViewTextBoxColumn.DataPropertyName = "Created";
-            this.createdDataGridViewTextBoxColumn.HeaderText = "Created";
-            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
-            this.createdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createdDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // burdenNameDataGridViewTextBoxColumn
-            // 
-            this.burdenNameDataGridViewTextBoxColumn.DataPropertyName = "BurdenName";
-            this.burdenNameDataGridViewTextBoxColumn.HeaderText = "BurdenName";
-            this.burdenNameDataGridViewTextBoxColumn.Name = "burdenNameDataGridViewTextBoxColumn";
-            this.burdenNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.burdenNameDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // successDataGridViewCheckBoxColumn
-            // 
-            this.successDataGridViewCheckBoxColumn.DataPropertyName = "Success";
-            this.successDataGridViewCheckBoxColumn.HeaderText = "Success";
-            this.successDataGridViewCheckBoxColumn.Name = "successDataGridViewCheckBoxColumn";
-            this.successDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.successDataGridViewCheckBoxColumn.Width = 60;
-            // 
-            // burdenLogNameDataGridViewTextBoxColumn
-            // 
-            this.burdenLogNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.burdenLogNameDataGridViewTextBoxColumn.DataPropertyName = "BurdenLogName";
-            this.burdenLogNameDataGridViewTextBoxColumn.HeaderText = "BurdenLogName";
-            this.burdenLogNameDataGridViewTextBoxColumn.Name = "burdenLogNameDataGridViewTextBoxColumn";
-            this.burdenLogNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingLog
-            // 
-            this.bindingLog.DataSource = typeof(GdaxHoarder.Data.Entities.BurdenLog);
+            this.gridBurdenLog.TabIndex = 0;
             // 
             // btnLogRefresh
             // 
             this.btnLogRefresh.Location = new System.Drawing.Point(498, 185);
             this.btnLogRefresh.Name = "btnLogRefresh";
             this.btnLogRefresh.Size = new System.Drawing.Size(119, 23);
-            this.btnLogRefresh.TabIndex = 4;
+            this.btnLogRefresh.TabIndex = 1;
             this.btnLogRefresh.Text = "Refresh";
             this.btnLogRefresh.UseVisualStyleBackColor = true;
             this.btnLogRefresh.Click += new System.EventHandler(this.btnLogRefresh_Click);
@@ -254,7 +196,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(623, 41);
-            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Balances";
             // 
@@ -300,6 +242,64 @@
             this.notifyIcon1.Text = "GDax Hoarder";
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             // 
+            // burdenLogIdDataGridViewTextBoxColumn
+            // 
+            this.burdenLogIdDataGridViewTextBoxColumn.DataPropertyName = "BurdenLogId";
+            this.burdenLogIdDataGridViewTextBoxColumn.HeaderText = "BurdenLogId";
+            this.burdenLogIdDataGridViewTextBoxColumn.Name = "burdenLogIdDataGridViewTextBoxColumn";
+            this.burdenLogIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.burdenLogIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // createdDataGridViewTextBoxColumn
+            // 
+            this.createdDataGridViewTextBoxColumn.DataPropertyName = "Created";
+            this.createdDataGridViewTextBoxColumn.HeaderText = "Created";
+            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
+            this.createdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // burdenNameDataGridViewTextBoxColumn
+            // 
+            this.burdenNameDataGridViewTextBoxColumn.DataPropertyName = "BurdenName";
+            this.burdenNameDataGridViewTextBoxColumn.HeaderText = "BurdenName";
+            this.burdenNameDataGridViewTextBoxColumn.Name = "burdenNameDataGridViewTextBoxColumn";
+            this.burdenNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.burdenNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // successDataGridViewCheckBoxColumn
+            // 
+            this.successDataGridViewCheckBoxColumn.DataPropertyName = "Success";
+            this.successDataGridViewCheckBoxColumn.HeaderText = "Success";
+            this.successDataGridViewCheckBoxColumn.Name = "successDataGridViewCheckBoxColumn";
+            this.successDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.successDataGridViewCheckBoxColumn.Width = 60;
+            // 
+            // burdenLogNameDataGridViewTextBoxColumn
+            // 
+            this.burdenLogNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.burdenLogNameDataGridViewTextBoxColumn.DataPropertyName = "BurdenLogName";
+            this.burdenLogNameDataGridViewTextBoxColumn.HeaderText = "BurdenLogName";
+            this.burdenLogNameDataGridViewTextBoxColumn.Name = "burdenLogNameDataGridViewTextBoxColumn";
+            this.burdenLogNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingLog
+            // 
+            this.bindingLog.DataSource = typeof(GdaxHoarder.Data.Entities.BurdenLog);
+            // 
+            // nextRunTimeDataGridViewTextBoxColumn
+            // 
+            this.nextRunTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nextRunTimeDataGridViewTextBoxColumn.DataPropertyName = "NextRunTime";
+            this.nextRunTimeDataGridViewTextBoxColumn.FillWeight = 200F;
+            this.nextRunTimeDataGridViewTextBoxColumn.HeaderText = "NextRunTime";
+            this.nextRunTimeDataGridViewTextBoxColumn.Name = "nextRunTimeDataGridViewTextBoxColumn";
+            this.nextRunTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nextRunTimeDataGridViewTextBoxColumn.Width = 97;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(GdaxHoarder.Data.EntityViews.BurdenView);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,13 +315,13 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdenLog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
