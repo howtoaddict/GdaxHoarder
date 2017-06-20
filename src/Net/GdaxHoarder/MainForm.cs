@@ -94,7 +94,7 @@ If you need help with setup, please click Help button on Setup form";
         private void loadBurdens()
         {
             var table = DbWrapper.Db.GetCollection<Burden>();
-            var list = table.FindAll();
+            var list = table.Find(Query.All("NextRunTime", Query.Ascending));
 
             bindingSource1.Clear();
             foreach (var o in list)
