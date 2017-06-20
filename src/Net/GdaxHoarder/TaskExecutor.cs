@@ -23,11 +23,7 @@ namespace GdaxHoarder
         private static string BASE_CURRENCY = "USD";
         static TaskExecutor()
         {
-            var keyPath = ".keys";
-            if (!File.Exists(keyPath))
-                keyPath = "../../../../.keys";
-
-            var settings = GdaxSettings.Parse(keyPath);
+            var settings = GdaxSettings.Parse(AppConsts.KEYS_PATH);
             ExchangeClientBase.IsSandbox = settings.IsSandbox;
 
             _api = new GdaxApi(settings.ToAuthContainer());

@@ -24,7 +24,7 @@ namespace GdaxHoarder
         {
             InitializeComponent();
 
-            var settings = GdaxSettings.Parse("../../../../.keys");
+            var settings = GdaxSettings.Parse(AppConsts.KEYS_PATH);
             ExchangeClientBase.IsSandbox = settings.IsSandbox;
 
             _api = new GdaxApi(settings.ToAuthContainer());

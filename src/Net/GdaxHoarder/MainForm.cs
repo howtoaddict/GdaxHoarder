@@ -34,8 +34,7 @@ namespace GdaxHoarder
 
         private void checkForKeys()
         {
-            var keyPath = ".keys";
-            if (!File.Exists(keyPath))
+            if (!File.Exists(AppConsts.KEYS_PATH))
             {
                 var frm = new SetupKeys();
                 if (frm.ShowDialog(this) != DialogResult.OK)

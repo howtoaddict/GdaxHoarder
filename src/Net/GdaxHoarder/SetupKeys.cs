@@ -36,7 +36,7 @@ namespace GdaxHoarder
                 sb.AppendLine(ctrl.Text);
 
             sb.AppendLine("SANDBOX");
-            File.WriteAllText(".keys", sb.ToString());
+            File.WriteAllText(AppConsts.KEYS_PATH, sb.ToString());
 
             this.DialogResult = DialogResult.OK;
             this.Close();
