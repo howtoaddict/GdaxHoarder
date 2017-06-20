@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,9 +25,28 @@ namespace GdaxHoarder
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            checkForKeys();
+
             reloadData();
 
             timer1.Start();
+        }
+
+        private void checkForKeys()
+        {
+            var keyPath = ".keys";
+            if (!File.Exists(keyPath))
+            {
+                var frm = new SetupKeys();
+                if (frm.ShowDialog(this) != DialogResult.OK)
+                {
+                    var body = @"Application can't work until API Keys are setup. Launch application again whenever you want to proceed with setup...
+                        
+If you need help with setup, please click Help button on Setup form";
+                    MessageBox.Show(this, body, "API Keys required");
+                    this.Close();
+                }
+            }
         }
 
         private void reloadData()
