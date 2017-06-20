@@ -25,7 +25,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 Now that mandatory disclaimer section is out of the way, let's proceed with setup instructions:
 
  1. Ensure you have [.NET Framework 4.5 installed](https://www.microsoft.com/en-us/download/details.aspx?id=30653). Follow the link you don't. If you are on Windows 8 or newer - you have it. Yeah, I know: mandatory updates suck.
- 2. Grab the latest release from Releases page. Extract it in directory of your choice.
+ 2. [Grab the latest release from Releases page](releases/). Extract it in directory of your choice.
  3. Start GdaxHoarder.exe and you'll be presented with Setup dialog. You basically need to provide app with [GDax API keys so that it can interact with your GDax account. Visit: https://www.gdax.com/settings/api
  4. On that page select Permissions you want to grant to API Key. Ideally you want to check all Permissions. However if you don't want to deposit / withdraw through app, and only want to auto-trade then allow View & Trade permissions.
  5. Copy Passphrase, Api Key and Secret Key into form. App will create `.keys` file with this data in folder. Note that this text file is not encrypted. If you change Api Key values in the future you can directly update them in this text file.
