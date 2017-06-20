@@ -22,7 +22,7 @@ namespace GdaxHoarder.Data.Validators
         {
             Errors.Clear();
 
-            if (Val.BurdenTypeAmount <= 0)
+            if (Val.BurdenTypeAmount <= 0 && Val.BurdenTypeId != EntityTypes.BurdenType.WithdrawToWallet)
                 Errors.Add("numAmount", "Must be greater than 0");
 
             if (Val.RepeatTotalSeconds < 60)
