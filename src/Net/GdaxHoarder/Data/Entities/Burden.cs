@@ -45,6 +45,14 @@ namespace GdaxHoarder.Data.Entities
                 return String.Format("Deposit ${0} through ACH", BurdenTypeAmount);
             else if (BurdenTypeId == BurdenType.BuyCurrency)
                 return String.Format("Buy {0} for ${1}", BurdenTypeCurrency, BurdenTypeAmount);
+            else if (BurdenTypeId == BurdenType.WithdrawToWallet)
+            {
+                if (BurdenTypeAmount <= 0)
+                    return String.Format("Withdraw all {0} to {1}", BurdenTypeCurrency, WalletAddr);
+                else
+                    return String.Format("Withdraw {0} {1} to {2}", 
+                        BurdenTypeAmount, BurdenTypeCurrency, WalletAddr);
+            }
 
             return base.ToString();
         }
