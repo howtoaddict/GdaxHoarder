@@ -30,7 +30,7 @@ namespace GdaxHoarder
 
             cmbCurrency.SelectedIndex = 0;
 
-            dtpNextRunTime.Value = DateTime.Now.Date.AddHours(DateTime.Now.Hour + 1);
+            dtpNextRunTime.Value = DateTime.Now.AddMinutes(61);
 
             foreach (var item in Enum.GetNames(typeof(RepeatUnits)))
                 cmbRepeatUnit.Items.Add(item);
