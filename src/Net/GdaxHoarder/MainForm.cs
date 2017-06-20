@@ -131,6 +131,7 @@ If you need help with setup, please click Help button on Setup form";
                 e.Value = "Delete";
         }
 
+        private DateTime _lastRefresh = DateTime.Now;
         private void timer1_Tick(object sender, EventArgs e)
         {
             var refreshAfter = false;
@@ -157,15 +158,16 @@ If you need help with setup, please click Help button on Setup form";
                 }
             }
 
-            if (refreshAfter)
+            if (refreshAfter || DateTime.Now.Subtract(_lastRefresh).TotalMinutes >= 5)
             {
+                _lastRefresh = DateTime.Now;
                 ThreadPool.QueueUserWorkItem(new WaitCallback(delayedRefresh));
             }
         }
 
         private void delayedRefresh(object state)
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             this.BeginInvoke(new MethodInvoker(reloadData));
         }
@@ -173,6 +175,11 @@ If you need help with setup, please click Help button on Setup form";
         private void btnLogRefresh_Click(object sender, EventArgs e)
         {
             loadLog();
+        }
+
+        private void btnBalancesRefresh_Click(object sender, EventArgs e)
+        {
+            refreshBalances();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)

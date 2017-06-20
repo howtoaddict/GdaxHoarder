@@ -47,6 +47,7 @@
             this.lblBtc = new System.Windows.Forms.Label();
             this.lblUsd = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnBalancesRefresh = new System.Windows.Forms.Button();
             this.burdenLogIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.burdenNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -189,6 +190,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnBalancesRefresh);
             this.groupBox3.Controls.Add(this.lblLtc);
             this.groupBox3.Controls.Add(this.lblEth);
             this.groupBox3.Controls.Add(this.lblBtc);
@@ -203,7 +205,7 @@
             // lblLtc
             // 
             this.lblLtc.AutoSize = true;
-            this.lblLtc.Location = new System.Drawing.Point(436, 18);
+            this.lblLtc.Location = new System.Drawing.Point(379, 18);
             this.lblLtc.Name = "lblLtc";
             this.lblLtc.Size = new System.Drawing.Size(30, 13);
             this.lblLtc.TabIndex = 3;
@@ -212,7 +214,7 @@
             // lblEth
             // 
             this.lblEth.AutoSize = true;
-            this.lblEth.Location = new System.Drawing.Point(292, 18);
+            this.lblEth.Location = new System.Drawing.Point(243, 18);
             this.lblEth.Name = "lblEth";
             this.lblEth.Size = new System.Drawing.Size(32, 13);
             this.lblEth.TabIndex = 2;
@@ -221,7 +223,7 @@
             // lblBtc
             // 
             this.lblBtc.AutoSize = true;
-            this.lblBtc.Location = new System.Drawing.Point(155, 18);
+            this.lblBtc.Location = new System.Drawing.Point(112, 18);
             this.lblBtc.Name = "lblBtc";
             this.lblBtc.Size = new System.Drawing.Size(31, 13);
             this.lblBtc.TabIndex = 1;
@@ -241,6 +243,16 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "GDax Hoarder";
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            // 
+            // btnBalancesRefresh
+            // 
+            this.btnBalancesRefresh.Location = new System.Drawing.Point(498, 13);
+            this.btnBalancesRefresh.Name = "btnBalancesRefresh";
+            this.btnBalancesRefresh.Size = new System.Drawing.Size(119, 23);
+            this.btnBalancesRefresh.TabIndex = 4;
+            this.btnBalancesRefresh.Text = "Refresh";
+            this.btnBalancesRefresh.UseVisualStyleBackColor = true;
+            this.btnBalancesRefresh.Click += new System.EventHandler(this.btnBalancesRefresh_Click);
             // 
             // burdenLogIdDataGridViewTextBoxColumn
             // 
@@ -352,5 +364,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn successDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn burdenLogNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button btnBalancesRefresh;
     }
 }
