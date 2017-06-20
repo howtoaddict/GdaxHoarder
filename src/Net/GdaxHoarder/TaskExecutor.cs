@@ -81,8 +81,19 @@ namespace GdaxHoarder
 
         private static async void withdrawToWallet(Burden burden)
         {
+            var amountToWithdraw = burden.BurdenTypeAmount;
+            if (amountToWithdraw <= 0)
+            {
+                var balance = await _api.Account.ListAccounts();
+                var curr = balance.Accounts.FirstOrDefault(a => a.Currency == burden.BurdenTypeCurrency.ToString());
+                if (curr == null)
+                    return;
+
+                amountToWithdraw = curr.Available;
+            }
+
             var resp = await _api.Withdrawals.Crypto(
-                burden.BurdenTypeAmount, burden.BurdenTypeCurrency.ToString(), burden.WalletAddr);
+                amountToWithdraw, burden.BurdenTypeCurrency.ToString(), burden.WalletAddr);
 
             if (httpSuccess(burden, resp))
             {
