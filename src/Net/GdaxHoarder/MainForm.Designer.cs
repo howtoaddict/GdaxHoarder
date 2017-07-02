@@ -32,37 +32,38 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnAddNewBurden = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gridBurdenLog = new System.Windows.Forms.DataGridView();
-            this.btnLogRefresh = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblLtc = new System.Windows.Forms.Label();
-            this.lblEth = new System.Windows.Forms.Label();
-            this.lblBtc = new System.Windows.Forms.Label();
-            this.lblUsd = new System.Windows.Forms.Label();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.btnBalancesRefresh = new System.Windows.Forms.Button();
             this.burdenLogIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.burdenNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.successDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.burdenLogNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingLog = new System.Windows.Forms.BindingSource(this.components);
+            this.btnLogRefresh = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnBalancesRefresh = new System.Windows.Forms.Button();
+            this.lblLtc = new System.Windows.Forms.Label();
+            this.lblEth = new System.Windows.Forms.Label();
+            this.lblBtc = new System.Windows.Forms.Label();
+            this.lblUsd = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nextRunTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdenLog)).BeginInit();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddNewBurden
@@ -86,6 +87,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Task,
             this.nextRunTimeDataGridViewTextBoxColumn,
+            this.Edit,
             this.DeleteColumn});
             this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
@@ -96,21 +98,9 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
-            // Task
+            // bindingSource1
             // 
-            this.Task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Task.DataPropertyName = "Task";
-            this.Task.FillWeight = 200F;
-            this.Task.HeaderText = "Task";
-            this.Task.Name = "Task";
-            this.Task.ReadOnly = true;
-            // 
-            // DeleteColumn
-            // 
-            this.DeleteColumn.HeaderText = "Delete";
-            this.DeleteColumn.Name = "DeleteColumn";
-            this.DeleteColumn.ReadOnly = true;
-            this.DeleteColumn.Text = "Delete";
+            this.bindingSource1.DataSource = typeof(GdaxHoarder.Data.EntityViews.BurdenView);
             // 
             // groupBox1
             // 
@@ -164,96 +154,6 @@
             this.gridBurdenLog.Size = new System.Drawing.Size(608, 160);
             this.gridBurdenLog.TabIndex = 0;
             // 
-            // btnLogRefresh
-            // 
-            this.btnLogRefresh.Location = new System.Drawing.Point(498, 185);
-            this.btnLogRefresh.Name = "btnLogRefresh";
-            this.btnLogRefresh.Size = new System.Drawing.Size(119, 23);
-            this.btnLogRefresh.TabIndex = 1;
-            this.btnLogRefresh.Text = "Refresh";
-            this.btnLogRefresh.UseVisualStyleBackColor = true;
-            this.btnLogRefresh.Click += new System.EventHandler(this.btnLogRefresh_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "BurdenTypeId";
-            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Task";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 60000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnBalancesRefresh);
-            this.groupBox3.Controls.Add(this.lblLtc);
-            this.groupBox3.Controls.Add(this.lblEth);
-            this.groupBox3.Controls.Add(this.lblBtc);
-            this.groupBox3.Controls.Add(this.lblUsd);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(623, 41);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Balances";
-            // 
-            // lblLtc
-            // 
-            this.lblLtc.AutoSize = true;
-            this.lblLtc.Location = new System.Drawing.Point(379, 18);
-            this.lblLtc.Name = "lblLtc";
-            this.lblLtc.Size = new System.Drawing.Size(30, 13);
-            this.lblLtc.TabIndex = 3;
-            this.lblLtc.Text = "LTC:";
-            // 
-            // lblEth
-            // 
-            this.lblEth.AutoSize = true;
-            this.lblEth.Location = new System.Drawing.Point(243, 18);
-            this.lblEth.Name = "lblEth";
-            this.lblEth.Size = new System.Drawing.Size(32, 13);
-            this.lblEth.TabIndex = 2;
-            this.lblEth.Text = "ETH:";
-            // 
-            // lblBtc
-            // 
-            this.lblBtc.AutoSize = true;
-            this.lblBtc.Location = new System.Drawing.Point(112, 18);
-            this.lblBtc.Name = "lblBtc";
-            this.lblBtc.Size = new System.Drawing.Size(31, 13);
-            this.lblBtc.TabIndex = 1;
-            this.lblBtc.Text = "BTC:";
-            // 
-            // lblUsd
-            // 
-            this.lblUsd.AutoSize = true;
-            this.lblUsd.Location = new System.Drawing.Point(9, 18);
-            this.lblUsd.Name = "lblUsd";
-            this.lblUsd.Size = new System.Drawing.Size(33, 13);
-            this.lblUsd.TabIndex = 0;
-            this.lblUsd.Text = "USD:";
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "GDax Hoarder";
-            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
-            // 
-            // btnBalancesRefresh
-            // 
-            this.btnBalancesRefresh.Location = new System.Drawing.Point(498, 13);
-            this.btnBalancesRefresh.Name = "btnBalancesRefresh";
-            this.btnBalancesRefresh.Size = new System.Drawing.Size(119, 23);
-            this.btnBalancesRefresh.TabIndex = 4;
-            this.btnBalancesRefresh.Text = "Refresh";
-            this.btnBalancesRefresh.UseVisualStyleBackColor = true;
-            this.btnBalancesRefresh.Click += new System.EventHandler(this.btnBalancesRefresh_Click);
-            // 
             // burdenLogIdDataGridViewTextBoxColumn
             // 
             this.burdenLogIdDataGridViewTextBoxColumn.DataPropertyName = "BurdenLogId";
@@ -298,6 +198,105 @@
             // 
             this.bindingLog.DataSource = typeof(GdaxHoarder.Data.Entities.BurdenLog);
             // 
+            // btnLogRefresh
+            // 
+            this.btnLogRefresh.Location = new System.Drawing.Point(498, 185);
+            this.btnLogRefresh.Name = "btnLogRefresh";
+            this.btnLogRefresh.Size = new System.Drawing.Size(119, 23);
+            this.btnLogRefresh.TabIndex = 1;
+            this.btnLogRefresh.Text = "Refresh";
+            this.btnLogRefresh.UseVisualStyleBackColor = true;
+            this.btnLogRefresh.Click += new System.EventHandler(this.btnLogRefresh_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "BurdenTypeId";
+            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Task";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnBalancesRefresh);
+            this.groupBox3.Controls.Add(this.lblLtc);
+            this.groupBox3.Controls.Add(this.lblEth);
+            this.groupBox3.Controls.Add(this.lblBtc);
+            this.groupBox3.Controls.Add(this.lblUsd);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(623, 41);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Balances";
+            // 
+            // btnBalancesRefresh
+            // 
+            this.btnBalancesRefresh.Location = new System.Drawing.Point(498, 13);
+            this.btnBalancesRefresh.Name = "btnBalancesRefresh";
+            this.btnBalancesRefresh.Size = new System.Drawing.Size(119, 23);
+            this.btnBalancesRefresh.TabIndex = 4;
+            this.btnBalancesRefresh.Text = "Refresh";
+            this.btnBalancesRefresh.UseVisualStyleBackColor = true;
+            this.btnBalancesRefresh.Click += new System.EventHandler(this.btnBalancesRefresh_Click);
+            // 
+            // lblLtc
+            // 
+            this.lblLtc.AutoSize = true;
+            this.lblLtc.Location = new System.Drawing.Point(379, 18);
+            this.lblLtc.Name = "lblLtc";
+            this.lblLtc.Size = new System.Drawing.Size(30, 13);
+            this.lblLtc.TabIndex = 3;
+            this.lblLtc.Text = "LTC:";
+            // 
+            // lblEth
+            // 
+            this.lblEth.AutoSize = true;
+            this.lblEth.Location = new System.Drawing.Point(243, 18);
+            this.lblEth.Name = "lblEth";
+            this.lblEth.Size = new System.Drawing.Size(32, 13);
+            this.lblEth.TabIndex = 2;
+            this.lblEth.Text = "ETH:";
+            // 
+            // lblBtc
+            // 
+            this.lblBtc.AutoSize = true;
+            this.lblBtc.Location = new System.Drawing.Point(112, 18);
+            this.lblBtc.Name = "lblBtc";
+            this.lblBtc.Size = new System.Drawing.Size(31, 13);
+            this.lblBtc.TabIndex = 1;
+            this.lblBtc.Text = "BTC:";
+            // 
+            // lblUsd
+            // 
+            this.lblUsd.AutoSize = true;
+            this.lblUsd.Location = new System.Drawing.Point(9, 18);
+            this.lblUsd.Name = "lblUsd";
+            this.lblUsd.Size = new System.Drawing.Size(33, 13);
+            this.lblUsd.TabIndex = 0;
+            this.lblUsd.Text = "USD:";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "GDax Hoarder";
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            // 
+            // Task
+            // 
+            this.Task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Task.DataPropertyName = "Task";
+            this.Task.FillWeight = 200F;
+            this.Task.HeaderText = "Task";
+            this.Task.Name = "Task";
+            this.Task.ReadOnly = true;
+            // 
             // nextRunTimeDataGridViewTextBoxColumn
             // 
             this.nextRunTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -308,9 +307,18 @@
             this.nextRunTimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.nextRunTimeDataGridViewTextBoxColumn.Width = 97;
             // 
-            // bindingSource1
+            // Edit
             // 
-            this.bindingSource1.DataSource = typeof(GdaxHoarder.Data.EntityViews.BurdenView);
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            // 
+            // DeleteColumn
+            // 
+            this.DeleteColumn.HeaderText = "Delete";
+            this.DeleteColumn.Name = "DeleteColumn";
+            this.DeleteColumn.ReadOnly = true;
+            this.DeleteColumn.Text = "Delete";
             // 
             // MainForm
             // 
@@ -327,13 +335,13 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdenLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingLog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -346,9 +354,6 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Task;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nextRunTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn DeleteColumn;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnLogRefresh;
         private System.Windows.Forms.DataGridView gridBurdenLog;
@@ -365,5 +370,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn burdenLogNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button btnBalancesRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Task;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nextRunTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteColumn;
     }
 }

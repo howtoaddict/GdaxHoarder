@@ -22,6 +22,13 @@ namespace GdaxHoarder
             InitializeComponent();
         }
 
+        public AddEditBurdenForm(int burdenId) : this()
+        {
+            _burdenId = burdenId;
+        }
+
+        private int? _burdenId;
+
         private void AddEditBurdenForm_Load(object sender, EventArgs e)
         {
             foreach (var item in Enum.GetNames(typeof(BurdenType)))
@@ -36,6 +43,14 @@ namespace GdaxHoarder
                 cmbRepeatUnit.Items.Add(item);
             cmbRepeatUnit.SelectedIndex = 3;
             numRepeatValue.Value = 1;
+
+            if (_burdenId.HasValue)
+            {
+                var table = DbWrapper.Db.GetCollection<Burden>();
+                var item = table.FindById(_burdenId.Value);
+
+                setFormData(item);
+            }
         }
 
         private void cmbBurden_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +91,15 @@ namespace GdaxHoarder
             if (validator.ValidateAdd())
             {
                 var table = DbWrapper.Db.GetCollection<Burden>();
-                table.Insert(populatedObject);
+                if (_burdenId.HasValue)
+                {
+                    populatedObject.BurdenId = _burdenId.Value;
+                    table.Update(populatedObject);
+                }
+                else
+                {
+                    table.Insert(populatedObject);
+                }
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -100,6 +123,17 @@ namespace GdaxHoarder
             };
 
             return obj;
+        }
+
+        private void setFormData(Burden item)
+        {
+            cmbBurdenTypeId.SelectedIndex = (int)item.BurdenTypeId - 1;
+            cmbCurrency.SelectedIndex = (int)item.BurdenTypeCurrency - 1;
+            numAmount.Value = item.BurdenTypeAmount;
+            txtWalletAddr.Text = item.WalletAddr;
+            dtpNextRunTime.Value = item.NextRunTime;
+            cmbRepeatUnit.SelectedIndex = (int)item.RepeatUnit - 1;
+            numRepeatValue.Value = item.RepeatValue;
         }
 
         /* form error handling */

@@ -58,7 +58,7 @@ If you need help with setup, please click Help button on Setup form";
         private async void refreshBalances()
         {
             var status = await TaskExecutor.AccountBalances();
-            
+
             foreach (var balance in status.Accounts)
             {
                 if (balance.Currency == "USD")
@@ -86,9 +86,7 @@ If you need help with setup, please click Help button on Setup form";
         {
             var form = new AddEditBurdenForm();
             if (form.ShowDialog(this) == DialogResult.OK)
-            {
                 loadBurdens();
-            }
         }
 
         private void loadBurdens()
@@ -114,6 +112,13 @@ If you need help with setup, please click Help button on Setup form";
             if (e.ColumnIndex == 2)
             {
                 var item = bindingSource1[e.RowIndex] as BurdenView;
+                var form = new AddEditBurdenForm(item.BurdenId);
+                if (form.ShowDialog(this) == DialogResult.OK)
+                    loadBurdens();
+            }
+            else if (e.ColumnIndex == 3)
+            {
+                var item = bindingSource1[e.RowIndex] as BurdenView;
 
                 var table = DbWrapper.Db.GetCollection<Burden>();
                 table.Delete(new BsonValue(item.BurdenId));
@@ -128,6 +133,8 @@ If you need help with setup, please click Help button on Setup form";
                 return;
 
             if (e.ColumnIndex == 2)
+                e.Value = "Edit";
+            if (e.ColumnIndex == 3)
                 e.Value = "Delete";
         }
 
@@ -158,7 +165,7 @@ If you need help with setup, please click Help button on Setup form";
                 }
             }
 
-            if (refreshAfter || DateTime.Now.Subtract(_lastRefresh).TotalMinutes >= 5)
+            if (refreshAfter) // || DateTime.Now.Subtract(_lastRefresh).TotalMinutes >= 5)
             {
                 _lastRefresh = DateTime.Now;
                 ThreadPool.QueueUserWorkItem(new WaitCallback(delayedRefresh));
