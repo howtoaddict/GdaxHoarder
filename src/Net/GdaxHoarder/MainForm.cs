@@ -153,6 +153,7 @@ If you need help with setup, please click Help button on Setup form";
             {
                 if (task.NextRunTime < DateTime.Now)
                 {
+                    // TODO: Check if task correctly executed and only update NextRunTime in that case
                     TaskExecutor.Execute(task);
 
                     task.NextRunTime = Burden.CalcNextRuntime(
@@ -177,7 +178,9 @@ If you need help with setup, please click Help button on Setup form";
 
         private void delayedRefresh(object state)
         {
-            Thread.Sleep(5000);
+            // After production testing, it seems we need quite a bit of time 
+            // for API to return correct values
+            Thread.Sleep(10000);
 
             this.BeginInvoke(new MethodInvoker(reloadData));
         }
