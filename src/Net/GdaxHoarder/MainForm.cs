@@ -25,6 +25,9 @@ namespace GdaxHoarder
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            gridBurdens.Columns[1].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            gridBurdenLog.Columns[1].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+
             checkForKeys();
 
             reloadData();
@@ -106,7 +109,7 @@ If you need help with setup, please click Help button on Setup form";
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == dataGridView1.NewRowIndex || e.RowIndex < 0)
+            if (e.RowIndex == gridBurdens.NewRowIndex || e.RowIndex < 0)
                 return;
 
             if (e.ColumnIndex == 2)
@@ -129,7 +132,7 @@ If you need help with setup, please click Help button on Setup form";
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.RowIndex == dataGridView1.NewRowIndex || e.RowIndex < 0)
+            if (e.RowIndex == gridBurdens.NewRowIndex || e.RowIndex < 0)
                 return;
 
             if (e.ColumnIndex == 2)
