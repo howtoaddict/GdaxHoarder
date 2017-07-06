@@ -2,6 +2,7 @@
 using CoinbaseExchange.NET.CoreGenerics;
 using CoinbaseExchange.NET.Endpoints;
 using CoinbaseExchange.NET.Endpoints.Account;
+using CoinbaseExchange.NET.Endpoints.Deposits;
 using CoinbaseExchange.NET.Endpoints.Orders;
 using GdaxHoarder.Data;
 using GdaxHoarder.Data.Entities;
@@ -30,17 +31,7 @@ namespace GdaxHoarder
         }
 
         private static GdaxApi _api;
-        public static void Execute(Burden burden)
-        {
-            if (burden.BurdenTypeId == BurdenType.DepositAch)
-                depositAch(burden);
-            else if (burden.BurdenTypeId == BurdenType.BuyCurrency)
-                buyCurrency(burden);
-            else if (burden.BurdenTypeId == BurdenType.WithdrawToWallet)
-                withdrawToWallet(burden);
-        }
-
-        private static async void depositAch(Burden burden)
+        public static async Task<bool> DepositAch(Burden burden)
         {
             //preRequest(btnBankDeposit);
             var methods = await _api.PaymentMethods.GetPaymentMethodsAsync();
@@ -58,9 +49,11 @@ namespace GdaxHoarder
                     resp.Amount.ToString("N0"), resp.Currency, resp.PayoutAt);
                 taskResult(burden, true, str);
             }
+
+            return resp.HttpResponse.IsSuccessStatusCode;
         }
 
-        private static async void buyCurrency(Burden burden)
+        public static async Task<bool> BuyCurrency(Burden burden)
         {
             var buyPair = burden.BurdenTypeCurrency + "-" + BASE_CURRENCY;
             var req = new OrdersMarketRequest
@@ -77,9 +70,11 @@ namespace GdaxHoarder
                     resp.Id, resp.CreatedAt, resp.Settled);
                 taskResult(burden, true, str);
             }
+
+            return resp.HttpResponse.IsSuccessStatusCode;
         }
 
-        private static async void withdrawToWallet(Burden burden)
+        public static async Task<bool> WithdrawToWallet(Burden burden)
         {
             var amountToWithdraw = burden.BurdenTypeAmount;
             if (amountToWithdraw <= 0)
@@ -87,7 +82,7 @@ namespace GdaxHoarder
                 var balance = await _api.Account.ListAccounts();
                 var curr = balance.Accounts.FirstOrDefault(a => a.Currency == burden.BurdenTypeCurrency.ToString());
                 if (curr == null)
-                    return;
+                    return await Task.FromResult(false);
 
                 amountToWithdraw = curr.Available;
             }
@@ -103,6 +98,8 @@ namespace GdaxHoarder
                     resp.Id);
                 taskResult(burden, true, str);
             }
+
+            return resp.HttpResponse.IsSuccessStatusCode;
         }
 
         public static async Task<ListAccountsResponse> AccountBalances()

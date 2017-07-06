@@ -1,5 +1,6 @@
 ﻿using GdaxHoarder.Data;
 using GdaxHoarder.Data.Entities;
+using GdaxHoarder.Data.EntityTypes;
 using GdaxHoarder.Data.EntityViews;
 using LiteDB;
 using System;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -142,7 +144,7 @@ If you need help with setup, please click Help button on Setup form";
         }
 
         private DateTime _lastRefresh = DateTime.Now;
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
             var refreshAfter = false;
 
@@ -154,18 +156,29 @@ If you need help with setup, please click Help button on Setup form";
                 if (task.NextRunTime < DateTime.Now)
                 {
                     // TODO: Check if task correctly executed and only update NextRunTime in that case
-                    TaskExecutor.Execute(task);
-
-                    task.NextRunTime = Burden.CalcNextRuntime(
-                        task.NextRunTime, task.RepeatUnit, task.RepeatValue);
-                    if (task.NextRunTime < DateTime.Now)
+                    var apiReached = true;
+                    try
                     {
-                        task.NextRunTime = Burden.CalcNextRuntime(
-                        DateTime.Now, task.RepeatUnit, task.RepeatValue);
+                        var success = await Execute(task);
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        apiReached = false;
                     }
 
-                    table.Update(task);
-                    refreshAfter = true;
+                    if (apiReached)
+                    {
+                        task.NextRunTime = Burden.CalcNextRuntime(
+                            task.NextRunTime, task.RepeatUnit, task.RepeatValue);
+                        if (task.NextRunTime < DateTime.Now)
+                        {
+                            task.NextRunTime = Burden.CalcNextRuntime(
+                            DateTime.Now, task.RepeatUnit, task.RepeatValue);
+                        }
+
+                        table.Update(task);
+                        refreshAfter = true;
+                    }
                 }
             }
 
@@ -174,6 +187,19 @@ If you need help with setup, please click Help button on Setup form";
                 _lastRefresh = DateTime.Now;
                 ThreadPool.QueueUserWorkItem(new WaitCallback(delayedRefresh));
             }
+        }
+
+
+        public static Task<bool> Execute(Burden burden)
+        {
+            if (burden.BurdenTypeId == BurdenType.DepositAch)
+                return TaskExecutor.DepositAch(burden);
+            else if (burden.BurdenTypeId == BurdenType.BuyCurrency)
+                return TaskExecutor.BuyCurrency(burden);
+            else if (burden.BurdenTypeId == BurdenType.WithdrawToWallet)
+                return TaskExecutor.WithdrawToWallet(burden);
+            else
+                throw new Exception("Invalid BurdenTypeId");
         }
 
         private void delayedRefresh(object state)
