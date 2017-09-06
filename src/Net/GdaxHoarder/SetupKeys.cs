@@ -35,7 +35,7 @@ namespace GdaxHoarder
             foreach (var ctrl in controls)
                 sb.AppendLine(ctrl.Text);
 
-            sb.AppendLine("SANDBOX");
+            sb.AppendLine("PRODUCTION");
             File.WriteAllText(AppConsts.KEYS_PATH, sb.ToString());
 
             this.DialogResult = DialogResult.OK;
