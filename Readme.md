@@ -14,6 +14,12 @@ After testing for past few weeks, I now feel pretty confident about letting app 
 
 ![GDax Hoarder Main Form](docs/imgs/MainForm.jpg)
 
+## Notable Updates since first Release
+
+ - 2017-12-19 Added support for purchasing Bitcoin Cash (BCH)
+ - Look at [this issue for possibly running GDaxHoarder on OSX and Linux platforms](https://github.com/howtoaddict/GdaxHoarder/issues/1). Thanks to @Skeyelab and @donaldsteele
+ - If someone goes through code and wants to vouch that it doesn't do anything funny for peace of mind of others, please open new issue. I'll gladly link to your code review from this Readme
+
 ## DISCLAIMER
 
 I do plan on maintaining this app and taking feature requests into consideration. However, keep in mind this is a hobby project. As all programmers I am busy with my full time job. And I may start working on something that you see as completely useless... like porting codebase to Python instead of implementing support for another exchanges.
