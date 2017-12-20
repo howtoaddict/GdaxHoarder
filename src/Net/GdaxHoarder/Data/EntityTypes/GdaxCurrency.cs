@@ -10,6 +10,7 @@ namespace GdaxHoarder.Data.EntityTypes
     {
         BTC = 1,
         ETH = 2,
-        LTC = 3
+        LTC = 3,
+        BCH = 4
     }
 }

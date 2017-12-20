@@ -76,6 +76,8 @@ If you need help with setup, please click Help button on Setup form";
                     lblEth.Text = String.Format("ETH: {0:N8}", balance.Balance);
                 else if (balance.Currency == "LTC")
                     lblLtc.Text = String.Format("LTC: {0:N8}", balance.Balance);
+                else if (balance.Currency == "BCH")
+                    lblBch.Text = String.Format("BCH: {0:N8}", balance.Balance);
             }
 
             if (FirstRefresh)

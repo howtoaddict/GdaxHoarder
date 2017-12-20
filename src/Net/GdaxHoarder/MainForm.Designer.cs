@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnAddNewBurden = new System.Windows.Forms.Button();
             this.gridBurdens = new System.Windows.Forms.DataGridView();
+            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,9 +49,6 @@
             this.lblBtc = new System.Windows.Forms.Label();
             this.lblUsd = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.burdenLogIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.burdenNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +57,7 @@
             this.bindingLog = new System.Windows.Forms.BindingSource(this.components);
             this.nextRunTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.lblBch = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridBurdens)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,8 +99,32 @@
             this.gridBurdens.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.gridBurdens.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
+            // Task
+            // 
+            this.Task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Task.DataPropertyName = "Task";
+            this.Task.FillWeight = 200F;
+            this.Task.HeaderText = "Task";
+            this.Task.Name = "Task";
+            this.Task.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            // 
+            // DeleteColumn
+            // 
+            this.DeleteColumn.HeaderText = "Delete";
+            this.DeleteColumn.Name = "DeleteColumn";
+            this.DeleteColumn.ReadOnly = true;
+            this.DeleteColumn.Text = "Delete";
+            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.btnAddNewBurden);
             this.groupBox1.Controls.Add(this.gridBurdens);
@@ -122,6 +147,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.gridBurdenLog);
             this.groupBox2.Controls.Add(this.btnLogRefresh);
             this.groupBox2.Location = new System.Drawing.Point(12, 263);
@@ -176,6 +203,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.lblBch);
             this.groupBox3.Controls.Add(this.btnBalancesRefresh);
             this.groupBox3.Controls.Add(this.lblLtc);
             this.groupBox3.Controls.Add(this.lblEth);
@@ -190,9 +220,10 @@
             // 
             // btnBalancesRefresh
             // 
-            this.btnBalancesRefresh.Location = new System.Drawing.Point(498, 13);
+            this.btnBalancesRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBalancesRefresh.Location = new System.Drawing.Point(534, 13);
             this.btnBalancesRefresh.Name = "btnBalancesRefresh";
-            this.btnBalancesRefresh.Size = new System.Drawing.Size(119, 23);
+            this.btnBalancesRefresh.Size = new System.Drawing.Size(83, 23);
             this.btnBalancesRefresh.TabIndex = 4;
             this.btnBalancesRefresh.Text = "Refresh";
             this.btnBalancesRefresh.UseVisualStyleBackColor = true;
@@ -201,7 +232,7 @@
             // lblLtc
             // 
             this.lblLtc.AutoSize = true;
-            this.lblLtc.Location = new System.Drawing.Point(379, 18);
+            this.lblLtc.Location = new System.Drawing.Point(315, 18);
             this.lblLtc.Name = "lblLtc";
             this.lblLtc.Size = new System.Drawing.Size(30, 13);
             this.lblLtc.TabIndex = 3;
@@ -210,7 +241,7 @@
             // lblEth
             // 
             this.lblEth.AutoSize = true;
-            this.lblEth.Location = new System.Drawing.Point(243, 18);
+            this.lblEth.Location = new System.Drawing.Point(202, 18);
             this.lblEth.Name = "lblEth";
             this.lblEth.Size = new System.Drawing.Size(32, 13);
             this.lblEth.TabIndex = 2;
@@ -219,7 +250,7 @@
             // lblBtc
             // 
             this.lblBtc.AutoSize = true;
-            this.lblBtc.Location = new System.Drawing.Point(112, 18);
+            this.lblBtc.Location = new System.Drawing.Point(92, 18);
             this.lblBtc.Name = "lblBtc";
             this.lblBtc.Size = new System.Drawing.Size(31, 13);
             this.lblBtc.TabIndex = 1;
@@ -239,28 +270,6 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "GDax Hoarder";
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
-            // 
-            // Task
-            // 
-            this.Task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Task.DataPropertyName = "Task";
-            this.Task.FillWeight = 200F;
-            this.Task.HeaderText = "Task";
-            this.Task.Name = "Task";
-            this.Task.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            // 
-            // DeleteColumn
-            // 
-            this.DeleteColumn.HeaderText = "Delete";
-            this.DeleteColumn.Name = "DeleteColumn";
-            this.DeleteColumn.ReadOnly = true;
-            this.DeleteColumn.Text = "Delete";
             // 
             // burdenLogIdDataGridViewTextBoxColumn
             // 
@@ -320,6 +329,15 @@
             // 
             this.bindingSource1.DataSource = typeof(GdaxHoarder.Data.EntityViews.BurdenView);
             // 
+            // lblBch
+            // 
+            this.lblBch.AutoSize = true;
+            this.lblBch.Location = new System.Drawing.Point(426, 18);
+            this.lblBch.Name = "lblBch";
+            this.lblBch.Size = new System.Drawing.Size(32, 13);
+            this.lblBch.TabIndex = 4;
+            this.lblBch.Text = "BCH:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,5 +392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nextRunTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteColumn;
+        private System.Windows.Forms.Label lblBch;
     }
 }

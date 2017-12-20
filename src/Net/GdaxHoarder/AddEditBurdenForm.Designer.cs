@@ -87,7 +87,8 @@
             this.cmbCurrency.Items.AddRange(new object[] {
             "Bitcoin (BTC)",
             "Ethereum (ETH)",
-            "Litecoin (LTC)"});
+            "Litecoin (LTC)",
+            "Bitcoin Cash (BCH)"});
             this.cmbCurrency.Location = new System.Drawing.Point(96, 38);
             this.cmbCurrency.Name = "cmbCurrency";
             this.cmbCurrency.Size = new System.Drawing.Size(278, 21);
