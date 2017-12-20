@@ -25,6 +25,8 @@ namespace GdaxHoarder
             InitializeComponent();
         }
 
+        public bool FirstRefresh = true;
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             gridBurdens.Columns[1].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
@@ -74,6 +76,15 @@ If you need help with setup, please click Help button on Setup form";
                     lblEth.Text = String.Format("ETH: {0:N8}", balance.Balance);
                 else if (balance.Currency == "LTC")
                     lblLtc.Text = String.Format("LTC: {0:N8}", balance.Balance);
+            }
+
+            if (FirstRefresh)
+            {
+                this.Hide();
+                this.WindowState = FormWindowState.Minimized;
+                notifyIcon1.Visible = true;
+
+                FirstRefresh = false;
             }
         }
 
